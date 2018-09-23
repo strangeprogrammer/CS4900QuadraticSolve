@@ -1,0 +1,25 @@
+Main stuff
+	Check number of arguments
+	Check validity of arguments
+	Check Discriminant
+	Perform Quadsolve
+	Check if solution is correct within a certain margin of error
+		Add a warning if it isn't
+Quadsolve Stuff
+	Deal with IEEE floating point numbers
+		Deal with Infinities and NANs
+			NAN + anything = NAN
+		Deal with division by 0
+		Normalized vs. Denormalized numbers
+		IEEE format:
+			exponent sign
+			exponent
+			mantissa sign
+			mantissa
+		Implement multiply by powers of 2 using bit shifts
+	Input checking
+		What to do if there's invalid input
+		*May* use scientific notation
+		Problem may not be solvable
+	Answer verification
+		Accuracy and tolerance
