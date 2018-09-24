@@ -1,5 +1,8 @@
+DONE:
 Main stuff
 	Check number of arguments
+TODO:
+	Get arguments
 	Check validity of arguments
 	Check Discriminant
 	Perform Quadsolve
