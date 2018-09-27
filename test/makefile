@@ -1,5 +1,5 @@
 PROGNAME	= quadsolve
-PROGPLACE	= ../Src/
+PROGPLACE	= ../src/
 PROG		= $(PROGPLACE)$(PROGNAME)
 
 export PROG
