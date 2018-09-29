@@ -12,3 +12,6 @@ ieee.o : ieee.c
 
 misc.o : misc.c
 	$(COMP) $@ $^
+
+parsing.o : parsing.c
+	$(COMP) $@ $^

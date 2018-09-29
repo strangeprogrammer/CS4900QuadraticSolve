@@ -13,4 +13,5 @@ argtest : argtest.bash $(PROG)
 	echo "'$<' passed successfully."
 
 $(PROG) :
-	make -C $(PROGPLACE) $(PROGNAME)
+	make -C $(PROGPLACE) $(PROGNAME) || echo "Error: $(PROG) does not compile properly."
+	echo "$(PROG) compiled properly."

@@ -1,21 +1,29 @@
 #!/bin/bash
 
-TESTSTRING="Error: this program needs 3 arguments exactly."
+RETVAL=1
 
-if [ "$($PROG)" != "$TESTSTRING" ]; then
-	echo $ERRSTRING
+$PROG &>/dev/null
+if [ "$?" != "1" ]; then
 	exit 1
-elif [ "$($PROG 0)" != "$TESTSTRING" ]; then
-	echo $ERRSTRING
+fi
+
+$PROG 3 &>/dev/null
+if [ "$?" != "1" ]; then
 	exit 1
-elif [ "$($PROG 0 1)" != "$TESTSTRING" ]; then
-	echo $ERRSTRING
+fi
+
+$PROG 3 2 &>/dev/null
+if [ "$?" != "1" ]; then
 	exit 1
-elif [ "$($PROG 0 1 2)" == "$TESTSTRING" ]; then
-	echo $ERRSTRING
+fi
+
+$PROG 3 2 1 &>/dev/null
+if [ "$?" == "1" ]; then
 	exit 1
-elif [ "$($PROG 0 1 2 3)" != "$TESTSTRING" ]; then
-	echo $ERRSTRING
+fi
+
+$PROG 3 2 1 0 &>/dev/null
+if [ "$?" != "1" ]; then
 	exit 1
 fi
 

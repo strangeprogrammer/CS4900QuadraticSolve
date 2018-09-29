@@ -1,9 +1,10 @@
 #include "headers.h"
 
 int main(int argc,char* argv[]){
-	if(argc!=4){
-		printf("Error: this program needs 3 arguments exactly.");
-		return 1;
-	}
-	return 0;
+	checkargs(argc);
+	float	a=getarg(argv[0]),
+		b=getarg(argv[1]),
+		c=getarg(argv[2]);
+	checknums(a,b,c);
+	exit(0);
 }
