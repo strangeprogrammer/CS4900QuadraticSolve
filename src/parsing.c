@@ -2,7 +2,7 @@
 
 void checkargs(int argc){
 	if(argc!=4){
-		printf("Error: this program needs 3 arguments exactly.");
+		fprintf(stderr,"Error: this program needs 3 arguments exactly.");
 		exit(1);
 	}
 }
@@ -10,21 +10,24 @@ void checkargs(int argc){
 float getarg(char* arg){
 	char** endptr;
 	float retval=strtof(arg,endptr);
-	if(retval==0){
+	if(retval==0||fplassify(retval)==FP_ZERO){
 		if(errno==ERANGE){
-			printf("Error: float '%s' causes underflow.",arg);
+			fprintf(stderr,"Error: argument '%s' causes underflow.",arg);
 			exit(2);
 		}else if(*endptr==arg){
-			printf("Error: could not convert string '%s' to a float.",arg);
+			fprintf(stderr,"Error: could not convert argument '%s' to a float.",arg);
 			exit(3);
 		}
 	}
-	if(retval==HUGE_VALF){
-		printf("Error: float '%s' causes positive overflow.",arg);
+	if(retval==HUGE_VALF||isinf(retval)==1){
+		fprintf(stderr,"Error: argument '%s' causes positive overflow.",arg);
 		exit(4);
-	}else if(retval==HUGE_VALL){
-		printf("Error: float '%s' causes negative overflow.",arg);
+	}else if(retval==HUGE_VALL||isinf(retval)==-1){
+		fprintf(stderr,"Error: argument '%s' causes negative overflow.",arg);
 		exit(5);
+	}else if(isnan(retval)){
+		fprintf(stderr,"Error: argument '%s' is not a number.",arg);
+		exit(6);
 	}
 	return retval;
 }
