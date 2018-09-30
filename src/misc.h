@@ -6,4 +6,6 @@ typedef enum bool{
 	false=0
 } bool;
 
+bool isquad(float a,float b,float c);
+
 #endif //MISC_H

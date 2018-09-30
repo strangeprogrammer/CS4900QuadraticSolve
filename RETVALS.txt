@@ -1,7 +1,7 @@
-0	Everything worked properly.
-1	Wrong number of arguments given.
-2	An argument causes underflow.
-3	An argument could not be converted to a float.
-4	An argument causes positive overflow or is infinite.
-5	An argument causes negative overflow or is negatively infinite.
-6	An argument is not a number.
+Number	Type	Reason
+0	Success	Everything worked properly.
+1	Error	Wrong number of arguments given.
+2	Error	An argument could not be converted to a float.
+3	Error	An argument causes underflow.
+4	Error	An argument causes overflow or is infinite.
+5	Error	An argument is not a number.

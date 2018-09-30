@@ -2,7 +2,8 @@
 #define HEADERS_H
 
 #include "libraries.h"
-#include "parsing.h"
+#include "err_codes.h"
 #include "misc.h"
+#include "parsing.h"
 
 #endif //HEADERS_H

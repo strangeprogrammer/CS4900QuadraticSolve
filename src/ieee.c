@@ -1,7 +1,7 @@
 #include "headers.h"
 
-bool dbleq(double a,double b){
-	if(fabs(a-b)<0.005){
+bool feq(double a,double b){
+	if(fabs(a-b)<0.0001){//Might have to change this constant
 		return true;
 	}
 	return false;
