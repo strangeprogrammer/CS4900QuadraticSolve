@@ -2,4 +2,15 @@ Format:
 
 Description | Time (est) | Risk | % Complete | Total time
 
+1) Command line compatible
+
+2) Accepts integers or floating point numbers
+
+3) Outputs at least 5 decimal point precision
+
+4) Number of solutions specified (complex solutions ignored)
+
+5) Division by 0 is handled
+
+
 ~
