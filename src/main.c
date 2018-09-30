@@ -1,10 +1,13 @@
-#include "headers.h"
+#include "libraries.h"
+#include "err_codes.h"
+#include "misc.h"
+#include "parsing.h"
 
 int main(int argc,char* argv[]){
 	checkargs(argc);
-	float	a=getarg(argv[0]),
-		b=getarg(argv[1]),
-		c=getarg(argv[2]);
+	float	a=getarg(argv[1]),
+		b=getarg(argv[2]),
+		c=getarg(argv[3]);
 	if(isquad(a,b,c)){
 		//Treat the input as a quadratic
 	}else{

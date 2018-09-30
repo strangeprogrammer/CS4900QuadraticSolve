@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#Test ability to recognize NAN's
+#Active Low Test
 $PROG NAN NAN NAN &>/dev/null
 if [ "$?" != "$NANARG_ERR" ]; then
 	exit 1
 fi
 
-#Test ability to recognize NAN's
+#Active High Test
 $PROG 1 1 1 &>/dev/null
 if [ "$?" == "$NANARG_ERR" ]; then
 	exit 1
