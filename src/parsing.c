@@ -2,6 +2,7 @@
 #include "err_codes.h"
 #include "parsing.h"
 
+
 void checkargs(int argc){
 	if(argc!=4){
 		fprintf(stderr,"Error: this program needs 3 arguments exactly.\n");
@@ -10,6 +11,7 @@ void checkargs(int argc){
 }
 
 float getarg(char arg[]){
+	//bool testing = false;
 	char* end;
 	errno=0;
 	float retval=strtof(arg,&end);
