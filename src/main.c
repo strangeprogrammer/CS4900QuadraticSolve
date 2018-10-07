@@ -2,6 +2,8 @@
 #include "err_codes.h"
 #include "misc.h"
 #include "parsing.h"
+#include "testing.h"
+#include "ieee.h"
 
 int main(int argc,char* argv[]){
 	checkargs(argc);
@@ -14,5 +16,11 @@ int main(int argc,char* argv[]){
 		fprintf(stderr,"Warning: The input given is being interpreted as a linear equation instead of a quadratic one.\n");
 		//Treat the input as a line
 	}
+
+	//tests
+	testGetArg();
+	testCheckArgs();
+	testFeq();
+	testIsQuad();
 	exit(SUCCESS);
 }
