@@ -8,4 +8,9 @@ typedef enum bool{
 
 bool isquad(float a,float b,float c);
 
+typedef struct intercepts{
+	float low,high;
+	int numroots;
+} intercepts;
+
 #endif //MISC_H
