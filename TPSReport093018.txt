@@ -3,6 +3,7 @@ Format:
 Task | Time (est) | Author | Risk | % Complete | Time spent | Review
 
 Input Validation | 0 | Stephen | 0 | 100% | 2hrs | No
-Put source files in own directories and add unit testing | ~4hrs | Daniel | ~1hr | 0% | No
+Put source files in own directories and add unit testing | ~4hrs | Daniel | 90% | 4hrs| No
 Implement Linear Solve | ~1hr | Dylan | ~1hr | 20% | N/A
 Implement Quadratic Solve | ~2hr | Stephen | ~1hr | 0% | N/A
+ai
