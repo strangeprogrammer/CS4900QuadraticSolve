@@ -26,10 +26,13 @@ int main(int argc,char* argv[]){
 	switch(x.numroots){
 	case 0:
 		printf("There are 0 x-intercepts.\n");
+		break;
 	case 1:
 		printf("There is 1 x-intercept: %f\n",x.low);
+		break;
 	case 2:
 		printf("There are 2 x-intercepts: %f, %f\n",x.low,x.high);
+		break;
 	}
 	if(x.numroots&&
 	!validate(a,b,c,x)){
