@@ -3,6 +3,6 @@
 
 #include "misc.h"
 
-bool feq(double a,double b);
+bool feq(float a,float b);
 
 #endif //IEEE_H

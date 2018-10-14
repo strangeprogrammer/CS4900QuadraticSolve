@@ -17,8 +17,8 @@ intercepts quadratic(float a,float b,float c){
 	//Adjust numerator if appropriate
 	if(!feq(descrim,0)){
 		retval.numroots=2;
-		retval.low+=sqrtf(descrim);
-		retval.high=-(b+sqrtf(descrim));
+		retval.low-=sqrtf(descrim);
+		retval.high=-b+sqrtf(descrim);
 	}
 	//Adjust denominator
 	retval.low/=2*a;

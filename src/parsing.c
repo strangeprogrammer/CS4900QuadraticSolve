@@ -1,34 +1,35 @@
 #include "libraries.h"
-#include "err_codes.h"
+#include "misc.h"
 #include "parsing.h"
 
-
-void checkargs(int argc){
+bool checkargs(int argc){
 	if(argc!=4){
 		fprintf(stderr,"Error: this program needs 3 arguments exactly.\n");
-		exit(NUMARG_ERR);
+		return false;
 	}
+	return true;
 }
 
-float getarg(char arg[]){
+fpstatus getarg(char arg[]){
 	char* end;
 	errno=0;
-	float retval=strtof(arg,&end);
-	if(retval==0||fpclassify(retval)==FP_ZERO){
+	float parsed=strtof(arg,&end);
+	fpstatus retval={.f=0,.e=SUCCESS};
+	if(parsed==0||fpclassify(parsed)==FP_ZERO){
 		if(end==arg){
 			fprintf(stderr,"Error: could not convert argument '%s' to a float.\n",arg);
-			exit(BADARG_ERR);
+			retval.e=BADARG_ERR;
 		}else if(errno==ERANGE){
 			fprintf(stderr,"Error: argument '%s' causes underflow.\n",arg);
-			exit(UNDERFLOW_ERR);
+			retval.e=UNDERFLOW_ERR;
 		}
-	}
-	if(isinf(retval)){
+	}else if(isinf(parsed)){
 		fprintf(stderr,"Error: argument '%s' causes overflow.\n",arg);
-		exit(OVERFLOW_ERR);
-	}else if(isnan(retval)){
+		retval.e=OVERFLOW_ERR;
+	}else if(isnan(parsed)){
 		fprintf(stderr,"Error: argument '%s' is not a number.\n",arg);
-		exit(NANARG_ERR);
+		retval.e=NANARG_ERR;
 	}
+	retval.f=parsed;
 	return retval;
 }

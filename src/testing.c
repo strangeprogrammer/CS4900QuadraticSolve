@@ -5,7 +5,6 @@
 //    at the bottom of main
 
 #include "libraries.h"
-#include "err_codes.h"
 #include "misc.h"
 #include "parsing.h"
 #include "ieee.h"
