@@ -6,8 +6,8 @@
 
 #include "libraries.h"
 #include "misc.h"
-#include "parsing.h"
-#include "ieee.h"
+#include "parsing/parsing.h"
+#include "fp/ieee.h"
 
 
 //Test getarg function x
@@ -94,10 +94,10 @@ void testIsQuad(){    //isquad returns boolean
       printf("%u", booleanArray[i]);
       printf("%d", i);
       broken = true;
-      printf("*** isquad function is NOT stable - misc.c ***\n\n");
+      printf("*** isquad function is NOT stable - ieee.c ***\n\n");
     }
     else if((broken == false) && (i == 6)){
-      printf("*** isquad function is stable - misc.c ***\n\n");
+      printf("*** isquad function is stable - ieee.c ***\n\n");
     }
   }
 }   //Only not quadratic if invalid strings are given

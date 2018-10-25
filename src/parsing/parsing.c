@@ -1,5 +1,5 @@
-#include "libraries.h"
-#include "misc.h"
+#include "../libraries.h"
+#include "../misc.h"
 #include "parsing.h"
 
 bool checkargs(int argc){

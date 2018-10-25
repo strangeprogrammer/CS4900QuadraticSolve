@@ -1,49 +1,45 @@
-CC = gcc
-CFLAGS = -Wall -pedantic -std=c99
-COMP = $(CC) $(CFLAGS) -c -o
-LINK = $(CC) $(CFLAGS) -o
+include make.i
+
+#Useful Macros
+
+OBJECTS :=	fp/ieee.o		\
+		fp/validate.o		\
+		parsing/parsing.o	\
+		solver/linear.o		\
+		solver/quadratic.o
 
 #For the actual program
 
-quadsolve : main.o ieee.o misc.o parsing.o linear.o quadratic.o validate.o
+default :: quadsolve
+
+quadsolve : main.o $(OBJECTS)
 	$(LINK) $@ $^ -lm
 
-main.o : main.c libraries.h misc.h parsing.h
+main.o : main.c libraries.h misc.h parsing/parsing.h
 	$(COMP) $@ $<
 
-ieee.o : ieee.c libraries.h misc.h
-	$(COMP) $@ $<
-
-misc.o : misc.c libraries.h misc.h
-	$(COMP) $@ $<
-
-parsing.o : parsing.c libraries.h parsing.h misc.h
-	$(COMP) $@ $<
-
-linear.o : linear.c linear.h ieee.h misc.h
-	$(COMP) $@ $<
-
-quadratic.o : quadratic.c quadratic.h libraries.h ieee.h
-	$(COMP) $@ $<
-
-validate.o : validate.c misc.h validate.h ieee.h
-	$(COMP) $@ $<
+$(OBJECTS) : force
+	$(MAKE) -C  $(dir $@) $(notdir $@)
 
 #For the tests
 
-quadtest : testmain.o testing.o ieee.o misc.o parsing.o linear.o quadratic.o validate.o
+quadtest : testmain.o testing.o $(OBJECTS)
 	$(LINK) $@ $^ -lm
 
-testmain.o : testmain.c libraries.h misc.h parsing.h testing.h ieee.h quadratic.h validate.h
+testmain.o : testmain.c libraries.h misc.h parsing/parsing.h testing.h fp/ieee.h solver/quadratic.h fp/validate.h
 	$(COMP) $@ $<
 
-testing.o : testing.c libraries.h misc.h parsing.h
+testing.o : testing.c libraries.h misc.h parsing/parsing.h
 	$(COMP) $@ $<
 
 #Miscellaneous
 
-clean :
-	rm -f *.o &>/dev/null
+.PHONY : squeaky
+
+clean ::
+	$(MAKE) -C fp clean
+	$(MAKE) -C parsing clean
+	$(MAKE) -C solver clean
 
 squeaky : clean
 	rm -f quadsolve &>/dev/null
