@@ -20,7 +20,7 @@ all : numarg badarg overflow underflow nanarg
 .SILENT :
 
 $(PROG) :
-	make -C $(PROGPLACE) $(PROGNAME) || echo "Error: $(PROG) does not compile properly."
+	make -C $(PROGPLACE) $(PROGNAME) || { echo "Error: $(PROG) does not compile properly."; exit 1; }
 	echo "$(PROG) compiled properly."
 
 numarg : numarg.bash $(PROG)

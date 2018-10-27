@@ -2,17 +2,8 @@ Format:
 
 Description | Time (est) | Risk | % Complete | Total time
 
-Input Validation | 0 | 0 | 100% | 2hrs
-Put source files in own directories and add unit testing | ~4hrs | ~1hr | 90% | 4hrs
-Implement Linear Solve | ~1hr | ~1hr | 0% | N/A
-Implement Quadratic Solve | ~2hr | ~1hr | 0% | N/A
-
-1) Command line compatible
-
-2) Accepts integers or floating point numbers
-
-3) Outputs at least 5 decimal point precision
-
-4) Number of solutions specified (complex solutions ignored)
-
-5) Division by 0 is handled
+Input Validation						| 0	| 0	| 100%	| 2hrs
+Put source files in own directories and add unit testing	| ~4hrs	| ~1hr	| 90%	| 4hrs
+Implement Linear Solve						| ~1hr	| ~1hr	| 100%	| 1
+Implement Quadratic Solve					| ~2hr	| ~1hr	| 100%	| 1.5
+Accuracy Testing						| ~3hrs	| ~1hr	| 0%	| N/A

@@ -1,18 +1,21 @@
 DONE:
 Main stuff
 	Check number of arguments
-TODO:
 	Get arguments
 	Check validity of arguments
 	Check Discriminant
 	Perform Quadsolve
+	Perform Linear Solve
 	Check if solution is correct within a certain margin of error
 		Add a warning if it isn't
+TODO:
 Quadsolve Stuff
 	Deal with IEEE floating point numbers
+DONE:
 		Deal with Infinities and NANs
 			NAN + anything = NAN
 		Deal with division by 0
+TODO:
 		Normalized vs. Denormalized numbers
 		IEEE format:
 			exponent sign
@@ -20,6 +23,7 @@ Quadsolve Stuff
 			mantissa sign
 			mantissa
 		Implement multiply by powers of 2 using bit shifts
+DONE:
 	Input checking
 		What to do if there's invalid input
 		*May* use scientific notation
