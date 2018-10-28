@@ -1,10 +1,10 @@
 #include "libraries.h"
 #include "misc.h"
-#include "parsing.h"
-#include "ieee.h"
-#include "linear.h"
-#include "quadratic.h"
-#include "validate.h"
+#include "parsing/parsing.h"
+#include "fp/ieee.h"
+#include "solver/linear.h"
+#include "solver/quadratic.h"
+#include "fp/validate.h"
 
 int main(int argc,char* argv[]){
 	if(!checkargs(argc)){

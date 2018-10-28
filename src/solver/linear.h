@@ -1,7 +1,7 @@
 #ifndef LINEAR_H
 #define LINEAR_H
 
-#include "misc.h"
+#include "../misc.h"
 
 intercepts linear(float b,float c);
 

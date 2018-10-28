@@ -6,8 +6,6 @@ typedef enum bool{
 	false=0
 } bool;
 
-bool isquad(float a,float b,float c);
-
 typedef struct intercepts{
 	float low,high;
 	int numroots;

@@ -1,7 +1,7 @@
-#include "libraries.h"
+#include "../libraries.h"
 #include "quadratic.h"
-#include "ieee.h"
-#include "misc.h"
+#include "../fp/ieee.h"
+#include "../misc.h"
 
 intercepts quadratic(float a,float b,float c){
 	intercepts retval;

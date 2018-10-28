@@ -1,7 +1,7 @@
 #ifndef PARSING_H
 #define PARSING_H
 
-#include "misc.h"
+#include "../misc.h"
 
 typedef struct fpstatus{
 	float f;

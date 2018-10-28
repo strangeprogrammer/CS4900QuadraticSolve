@@ -1,10 +1,10 @@
 #include "libraries.h"
 #include "misc.h"
-#include "parsing.h"
+#include "parsing/parsing.h"
 #include "testing.h"
-#include "ieee.h"
-#include "quadratic.h"
-#include "validate.h"
+#include "fp/ieee.h"
+#include "solver/quadratic.h"
+#include "fp/validate.h"
 
 int main(int argc,char* argv[]){
 	testGetArg();
