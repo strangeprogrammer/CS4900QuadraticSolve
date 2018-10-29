@@ -1,7 +1,6 @@
 // mock_quadratic.c
 // mock_quadratic is a mock object for quadratic()
 // This allows:	--MODIFICATION HERE - everything below
-//   testing of the qsolve_roots() with a mock object,
 //
 // First called is:
 // mock_setup_quadrati():  currently allows only one x value at a time.
@@ -63,15 +62,14 @@ intercepts quadratic(float ta, float tb, float tc){
 		if(fabs(eb - tb) > epsilon) {        //Check if expected b is within 1 epsilon
 				flag=1;       //If it is set the flag bit
 		}
-		b = tb;     //Set a to ta inputted by user
+		b = tb;     //Set b to tb inputted by user
 		if(fabs(ec - tc) > epsilon) {        //Check if expected c is within 1 epsilon
 				flag=1;       //If it is set the flag bit
 		}
-		c = tc;     //Set a to ta inputted by user
+		c = tc;     //Set c to tc inputted by user
 
 		count++;        //Increment function call counter
 		return quadAns;   //Return from qsolve_sqrt(
-
 }
 
 
