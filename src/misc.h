@@ -6,6 +6,18 @@ typedef enum bool{
 	false=0
 } bool;
 
-bool isquad(float a,float b,float c);
+typedef struct intercepts{
+	float low,high;
+	int numroots;
+} intercepts;
+
+typedef enum err_code{
+	SUCCESS=0,
+	NUMARG_ERR=1,
+	BADARG_ERR=2,
+	UNDERFLOW_ERR=3,
+	OVERFLOW_ERR=4,
+	NANARG_ERR=5
+} err_code;
 
 #endif //MISC_H

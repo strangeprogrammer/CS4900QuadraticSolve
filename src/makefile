@@ -1,20 +1,46 @@
-COMP = gcc -c -o
-LINK = gcc -o
+include make.i
 
-quadsolve : main.o ieee.o misc.o parsing.o testing.o
-	$(LINK) $@ $^
+#Useful Macros
 
-main.o : main.c libraries.h err_codes.h misc.h parsing.h
+OBJECTS :=	fp/ieee.o		\
+		fp/validate.o		\
+		parsing/parsing.o	\
+		solver/linear.o		\
+		solver/quadratic.o
+
+#For the actual program
+
+default :: quadsolve
+
+quadsolve : main.o $(OBJECTS)
+	$(LINK) $@ $^ -lm
+
+main.o : main.c libraries.h misc.h parsing/parsing.h
 	$(COMP) $@ $<
 
-ieee.o : ieee.c libraries.h misc.h
+$(OBJECTS) : force
+	$(MAKE) -C  $(dir $@) $(notdir $@)
+
+#For the tests
+
+quadtest : testmain.o testing.o $(OBJECTS)
+	$(LINK) $@ $^ -lm
+
+testmain.o : testmain.c libraries.h misc.h parsing/parsing.h testing.h fp/ieee.h solver/quadratic.h fp/validate.h
 	$(COMP) $@ $<
 
-misc.o : misc.c libraries.h misc.h
+testing.o : testing.c libraries.h misc.h parsing/parsing.h
 	$(COMP) $@ $<
 
-parsing.o : parsing.c libraries.h err_codes.h parsing.h
-	$(COMP) $@ $<
+#Miscellaneous
 
-testing.o : testing.c libraries.h err_codes.h misc.h parsing.h
-	$(COMP) $@ $<
+.PHONY : squeaky
+
+clean ::
+	$(MAKE) -C fp clean
+	$(MAKE) -C parsing clean
+	$(MAKE) -C solver clean
+
+squeaky : clean
+	rm -f quadsolve &>/dev/null
+	rm -f quadtest &>/dev/null
