@@ -6,8 +6,7 @@
 
 #include "../misc.h"
 void mock_setup_linear(float tb, float tc, float tepsilon, intercepts tquadAns);
-intercepts linear(float tb, float tc);
-int mock_check_linear();
+int mock_check_linear(int *tcount, float *tb, float *tc);
 void mock_teardown_linear();
 
 #endif	//MOCK_LINEAR_H
