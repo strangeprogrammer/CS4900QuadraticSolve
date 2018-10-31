@@ -3,6 +3,8 @@
 #include "../fp/ieee.h"
 #include "../misc.h"
 
+//Returns intercept values? and number of roots in intercepts struct
+
 intercepts quadratic(float a,float b,float c){
 	intercepts retval;
 	float descrim=b*b-4*a*c;
