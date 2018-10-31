@@ -17,19 +17,15 @@
 // The mock linear() does keep track of the number of times
 //    it is called, which should only be 1.
 
-#include <math.h>
 #include "mock_linear.h"
-#include "linear.h"
 #include "../libraries.h"
-#include "../fp/ieee.h"
-#include "../misc.h"
 
 static float b = -1;		//Actual arguments passed to linear()
-static float c = -1;		//Actual arguments passed to linear()
+static float c = -1;
 
 static float eb = -1;		//Expected argument b to linear()
-static float ec = -1;		//Expected argument c to linear()
-static intercepts linAns;		//Expected return form linear()
+static float ec = -1;
+static intercepts linAns = {.low=-1, .high=-1, .numroots=-1};		//Expected return form linear()
 
 static int count = 0;		//Actual count of calls linear() made
 static int flag = -1;
@@ -43,7 +39,9 @@ void mock_setup_linear(float tb, float tc, float tepsilon, intercepts tlinAns){
     eb = b;
     ec = c;
     epsilon = tepsilon;
-    linAns = tlinAns;		//intercepts structs *
+    linAns.low = tlinAns.low;
+    linAns.high = tlinAns.high;
+    linAns.numroots = tlinAns.numroots;
     count = 0;
     flag = 0;
 }
@@ -57,7 +55,7 @@ intercepts linear(float tb, float tc){
     }
     b = tb;     //Set b to tb inputted by user
     if(fabs(ec - tc) > epsilon) {        //Check if expected c is within 1 epsilon
-            flag=1;       //If it is set the flag bit
+        flag=1;       //If it is set the flag bit
     }
     c = tc;     //Set c to tc inputted by user
 
@@ -87,7 +85,9 @@ void mock_teardown_linear(){
     eb = -1;
     ec = -1;
     epsilon = -1.0;
-    //linAns = -1.0;
+    linAns.low = -1;
+    linAns.high = -1;
+    linAns.numroots = -1;
     count = 0;
     flag  = -1;
     return ;

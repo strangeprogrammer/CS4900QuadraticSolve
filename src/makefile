@@ -40,6 +40,7 @@ clean ::
 	$(MAKE) -C fp clean
 	$(MAKE) -C parsing clean
 	$(MAKE) -C solver clean
+	$(MAKE) -C testing clean
 
 squeaky : clean
 	rm -f quadsolve &>/dev/null

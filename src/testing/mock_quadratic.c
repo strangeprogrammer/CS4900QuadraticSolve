@@ -17,21 +17,17 @@
 // The mock quadratic() does keep track of the number of times
 //    it is called, which should only be 1.
 
-#include <math.h>
 #include "mock_quadratic.h"
-#include "quadratic.h"
 #include "../libraries.h"
-#include "../fp/ieee.h"
-#include "../misc.h"
 
 static float a = -1;		//Actual arguments passed to quadratic()
-static float b = -1;		//Actual arguments passed to quadratic()
-static float c = -1;		//Actual arguments passed to quadratic()
+static float b = -1;
+static float c = -1;
 
 static float ea = -1;		//Expected argument a to quadratic()
-static float eb = -1;		//Expected argument b to quadratic()
-static float ec = -1;		//Expected argument c to quadratic()
-static intercepts quadAns;		//Expected return form quadratic()
+static float eb = -1;
+static float ec = -1;
+static intercepts quadAns= {.low=-1,.high=-1,.numroots=-1};		//Expected return form quadratic()
 
 static int count = 0;		//Actual count of calls quadratic() made
 static int flag = -1;
@@ -39,14 +35,16 @@ static float epsilon = -1;		//For prcision checking
 
 
 //Initialize and expect one call to mock_quadratic()
-//Expecting argument 1a, 1b, 1c all to be within 1epsilon fo absolute error
+//Expecting argument ta, tb, tc all to be within 1epsilon fo absolute error
 //return result = quadAns of type intercept
 void mock_setup_quadratic(float ta, float tb, float tc, float tepsilon, intercepts tquadAns){
     ea = a;
     eb = b;
     ec = c;
     epsilon = tepsilon;
-    quadAns = tquadAns;		//intercepts structs *
+    quadAns.low=tquadAns.low;
+    quadAns.high=tquadAns.high;
+    quadAns.numroots=tquadAns.numroots;
     count = 0;
     flag = 0;
 }
@@ -60,7 +58,7 @@ intercepts quadratic(float ta, float tb, float tc){
     }
     a = ta;     //Set a to ta inputted by user
     if(fabs(eb - tb) > epsilon) {        //Check if expected b is within 1 epsilon
-            flag=1;       //If it is set the flag bit
+        flag=1;       //If it is set the flag bit
     }
     b = tb;     //Set b to tb inputted by user
     if(fabs(ec - tc) > epsilon) {        //Check if expected c is within 1 epsilon
@@ -79,8 +77,8 @@ int mock_check_quadratic(int *tcount, float *ta, float *tb, float *tc){
     int	ret;        //initiate return value
     *tcount = count;    //Point tcount to count
     *ta = a;        //Point ta to a
-    *tb = b;        //Point ta to b
-    *tc = c;        //Point tc to c
+    *tb = b;
+    *tc = c;        
     if((flag == 0) && (count==1)) {     //If no flag and the function was called
         ret = 0;      //WEre good
     } else {
@@ -96,7 +94,9 @@ void mock_teardown_quadratic(){
     eb = -1;
     ec = -1;
     epsilon = -1.0;
-    //quadAns = -1.0;
+    quadAns.low=-1;
+    quadAns.high=-1;
+    quadAns.numroots=-1;
     count = 0;
     flag  = -1;
     return ;

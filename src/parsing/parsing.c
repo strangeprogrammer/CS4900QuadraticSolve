@@ -33,3 +33,5 @@ fpstatus getarg(char arg[]){
 	retval.f=parsed;
 	return retval;
 }
+
+//fpstatus.f is individual arguments

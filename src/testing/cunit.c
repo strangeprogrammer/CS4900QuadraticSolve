@@ -1,6 +1,6 @@
 // cunit.c
 // The global constants for cunit and cunit_init(),
-// which should be called befoer using the unit test 
+// which should be called befoer using the unit test
 // macros in cunit.h
 #include <stdio.h>
 #include "cunit.h"
@@ -13,12 +13,11 @@ double dm;
 double dmacheps = 0.5;
 
 cunit_log = stderr;
-// a crude way for getting close to macheps 
-// should use a standard lib call here 
+// a crude way for getting close to macheps
+// should use a standard lib call here
 while( (1.0 + (dm = dmacheps/2.0) ) != 1.0  ) {
    dmacheps = dm;
 }
 cunit_dmacheps = dmacheps;
-return 0; 
+return 0;
 }
-
