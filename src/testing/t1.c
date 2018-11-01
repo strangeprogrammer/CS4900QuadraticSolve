@@ -1,16 +1,16 @@
 /*
 * t1.c
-* Unit tests quadratic() and linear()
-* solves a * x^2 + b x + c = 0 or mx + b = 0
-*   (respectively) for the roots
-* intercepts.low and intercepts.high
-*
+* Unit tests quadratic_quadratic() and linear_linear().
+* Calculates the roots and number of roots
+*   (respectively) for  intercepts.low and intercepts.high
 */
 
 #include <stdlib.h>
 #include "cunit.h"
 #include "../solver/quadratic.h"
 #include "../solver/linear.h"
+//#include "mock_quadratic.h"
+//#include "mock_linear.h"
 #include "../misc.h"
 
 
@@ -42,5 +42,4 @@ int main() {		//Need to check intercept values and number of roots value
     ret2 = linear(b, c);
     assert_eq("Wrong number of roots",ret2.numroots, numroots);
     assert_feqrerr("Wrong value for the low root", ret2.low, x1, .000001);
-
 }

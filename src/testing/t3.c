@@ -1,6 +1,6 @@
 /*
 * t3.c
-* Unit tests for isquad(), feq()
+* Unit tests for ieee_isquad(), ieee_feq()
 *		Both return bools
 */
 
@@ -42,5 +42,4 @@ int main() {
 	assert_eq("feq not working right", sbool, 1);
 	tbool = feq(3, 2);
 	assert_eq("feq not working right", tbool, 0);
-
 }

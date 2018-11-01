@@ -13,7 +13,7 @@ all ::
 	gcc -Wall -pedantic -std=c99 -c *.c
 
 t1 : t1.o cunit.o ../solver/quadratic.o ../solver/linear.o ../fp/ieee.o
-	$(LINK) t1 t1.o cunit.o ../solver/quadratic.o ../solver/linear.o ../fp/ieee.o -lm
+	$(LINK) t1 t1.o cunit.o ../solver/quadratic.o ../solver/linear.o ../fp/ieee.o 
 
 t2 : t2.o cunit.o  ../parsing/parsing.o
 	$(LINK) t2 t2.o cunit.o ../parsing/parsing.o -lm 

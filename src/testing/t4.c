@@ -1,6 +1,6 @@
 /*
 * t4.c
-* Unit tests for quadfunc(), validate()
+* Unit tests for validate_quadfunc(), validate_validate()
 *		quadfunc returns float and validate returns bools
 */
 
@@ -36,5 +36,4 @@ int main(){
 	c = (1.1*3.0) - 2.3;		//c=1
 	ret2 = quadfunc(a, b, c, x);
 	assert_feqrerr("quadfunc return is not working", ret2, 3.00, .000001);
-
 }

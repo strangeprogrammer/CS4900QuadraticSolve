@@ -1,6 +1,6 @@
 /*
 * t2.c
-* Unit tests getarg(char arg[])
+* Unit tests parsing_getarg(char arg[])
 * * Check if fpstatus.f(loat), .e(rror code)
 *		variable returned from getarg is correct.
 */
@@ -35,5 +35,4 @@ int main() {
 	assert_feqrerr("nan", ret9.f, 0.0, 0.0000001);
 
 	printf("\nIF T2 RAN CORRECTLY THERE SHOULD BE 4 ERROR MESSAGES^^^^\n");	//NO AVOIDING
-
 }
