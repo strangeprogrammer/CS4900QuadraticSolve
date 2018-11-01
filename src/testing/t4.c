@@ -1,6 +1,6 @@
 /*
 * t4.c
-* Unit tests for validate_quadfunc(), validate_validate()
+* Unit tests for quadfunc(), validate()
 *		quadfunc returns float and validate returns bools
 */
 
@@ -11,15 +11,22 @@
 int main(){
 
 	//VALIDATE_VALIDATE TESTS/VARIABLES
-	//float a, b, c, x;
-	//intercepts x = {x.low=2, x.high=1, x.numroots=1};
-	//bool k = validate(2,2,2,x);
 	cunit_init();		// initialize the unit testing framework
+	float a, b, c, x, ret, ret2;
+	intercepts y = {y.low=2, y.high=1, y.numroots=1};
+	intercepts y2 = {y2.low=0, y2.high=0, y2.numroots=2};
+
+	a=2; b=2; c=2;
+	bool k = validate(a,b,c,y);
+	assert_eq("ret", k, 0);		//t1
+
+	a=0; b=0; c=-0;
+	bool k2 = validate(a, b, c, y2);
+	assert_eq("ret", k2, 1);		//t2
 
 
 	//VALIDATE_ISQUAD TESTS/VARIABLES
-	float a, b, c, x, x1, x2, ret, ret2;
-	cunit_init();		// initialize the unit testing framework
+	float x1, x2;
 	x = 1.0;
 	x1 = 3.1;
 	x2 = 3.3;		//scratch variables

@@ -10,7 +10,9 @@
 #include "../parsing/parsing.h"
 
 int main() {
-
+    
+    printf("---- ANY ERROR STARTING WITH \"*\" IS EXPECTED IN TESTS AND SHOULD BE IGNORED ----\n");    //NO AVOIDING
+    
 	fpstatus ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8, ret9;
 	cunit_init();
 	ret1 = getarg("0");		//Zero
@@ -29,10 +31,12 @@ int main() {
 	assert_feqrerr("negative int", ret3.f, -1.0, 0.0000001);
 	assert_feqrerr("decimal", ret4.f, 2.0, 0.0000001);
 	assert_feqrerr("negative decimal", ret5.f, -2.0, 0.0000001);
-	assert_feqrerr("underflow", ret6.f, 0.0, 0.0000001);
-	assert_feqrerr("overflow", ret7.f, 0.0, 0.0000001);
-	assert_feqrerr("word", ret8.f, 0.0, 0.0000001);
-	assert_feqrerr("nan", ret9.f, 0.0, 0.0000001);
-
-	printf("\nIF T2 RAN CORRECTLY THERE SHOULD BE 4 ERROR MESSAGES^^^^\n");	//NO AVOIDING
+    double k = ret6.e;
+	assert_feqrerr("underflow", k, 3.0, 0.0000001);
+    double k2 = ret7.e;
+	assert_feqrerr("overflow", k2, 4.0, 0.0000001);
+    double k3 = ret8.e;
+	assert_feqrerr("word", k3, 2.0, 0.0000001);
+    double k4 = ret9.e;
+	assert_feqrerr("nan", k4, 5.0, 0.0000001);
 }
