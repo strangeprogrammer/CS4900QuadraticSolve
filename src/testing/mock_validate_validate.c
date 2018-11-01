@@ -61,7 +61,7 @@ bool validate(float ta, float tb, float tc, intercepts tx){
     }
     a = ta;     //Set a to ta inputted by user
     if(fabs(eb - tb) > epsilon) {        //Check if expected b is within 1 epsilon
-            flag=1;       //If it is set the flag bit
+        flag=1;       //If it is set the flag bit
     }
     b = tb;     //Set b to tb inputted by user
     if(fabs(ec - tc) > epsilon) {        //Check if expected c is within 1 epsilon

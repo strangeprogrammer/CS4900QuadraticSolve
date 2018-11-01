@@ -57,7 +57,6 @@ bool feq(float tb, float tc){
         flag=1;       //If it is set the flag bit
     }
     c = tc;     //Set c to tc inputted by user
-
     count++;        //Increment function call counter
     return feqAns;   //Return from qsolve_sqrt(
 }

@@ -1,4 +1,6 @@
 Notes to self: (DMD)
 
-  - Create and modify t1, t2, t3, t4, t5 **Might have to use different cunit library
-  - create targets for makefile
+  + Create t1 -> quadratic.c, linear.c *MOCK OBJECT
+  + Create t2 -> parsing.c 	       *MOCK OBJECT
+  ~ Create t3 -> ieee_isquad, ieee_feq *MOCK OBJECT
+  - Create validate tests for t3, feq is done.  Add mock objects to t-files.
