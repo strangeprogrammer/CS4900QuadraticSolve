@@ -44,4 +44,7 @@ clean ::
 
 squeaky : clean
 	rm -f quadsolve &>/dev/null
-	rm -f quadtest &>/dev/null
+	rm -f testing/t1 &>/dev/null
+	rm -f testing/t2 &>/dev/null
+	rm -f testing/t3 &>/dev/null
+	rm -f testing/t4 &>/dev/null

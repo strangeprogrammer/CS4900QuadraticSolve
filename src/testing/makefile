@@ -1,12 +1,8 @@
 include ../make.i
 
-#Commands make tests && make runall -> runs all tests
+#Commands "make tests && make runall" -> runs all tests
 
-SRC = makefile mock_ieee_feq.c mock_ieee_feq.h  mock_ieee_isquad.c \
-  mock_ieee_isquad.h mock_linear.c mock_linear.h mock_parsing_getarg.c \
-  mock_parsing_getarg.h mock_quadratic.c mock_quadratic.h mock_validate_quadfunc.c \
-  mock_validate_quadfunc.h mock_validate_validate.c mock_validate_validate.h \
-  cunit.c cunit.h t1.c
+SRC = makefile cunit.c cunit.h t1.c t2.c t3.c t4.c
 
 
 #Targets:
