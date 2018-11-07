@@ -12,7 +12,7 @@ int main(){
 
 	//VALIDATE_VALIDATE TESTS/VARIABLES
 	cunit_init();		// initialize the unit testing framework
-	float a, b, c, x, ret, ret2;
+	float a, b, c, x;
 	intercepts y = {y.low=2, y.high=1, y.numroots=1};
 	intercepts y2 = {y2.low=0, y2.high=0, y2.numroots=2};
 
@@ -31,16 +31,14 @@ int main(){
 	x1 = 3.1;
 	x2 = 3.3;		//scratch variables
 	a = 1.0;
-	b = -x1 + -x2;	//b=-.6.4
-	c = x1 * x2;	//a,b,c values		c=10.23
-	ret = quadfunc(a, b, c, x);	//4.83
-	assert_feqrerr("quadfunc return is not working", ret, 4.83, .000001);
+	b = -6.4;	//b=-.6.4
+	c = 10.23;	//a,b,c values		c=10.23
+	assert_feqrerr("quadfunc return is not working", quadfunc(a, b, c, x), 4.83, .000001);
 
-	x1 = (1.1*3.0) - 3.8;		//Test 2
-	x2=0;
+	x1 = -.05;		//Test 2
+	x2 = 0;
 	a = 0;		//a=1
-	b = (1.1*3.0) - 1.3;		//b=2
-	c = (1.1*3.0) - 2.3;		//c=1
-	ret2 = quadfunc(a, b, c, x);
-	assert_feqrerr("quadfunc return is not working", ret2, 3.00, .000001);
+	b = 2.0;		//b=2
+	c = 1.0;		//c=1
+	assert_feqrerr("quadfunc return is not working", quadfunc(a, b, c, x), 3.00, .000001);
 }
