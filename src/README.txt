@@ -5,3 +5,6 @@ The name of the program will be 'quadsolve'.
 
 To make the testing program, type 'make' or 'make quadtest'.
 The name of the program will be 'quadtest'.
+
+
+- Move files. Update makefile. Reroute output for tests.

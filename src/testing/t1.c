@@ -28,18 +28,18 @@ int main() {		//Need to check intercept values and number of roots value
     c = x1 * x2;	//a,b,c values		c=10.23
     ret = quadratic(a, b, c);
     assert_eq("Wrong number of roots",ret.numroots, numroots);
-    assert_feqrerr("Wrong value for the high root", ret.high, x2, .000001);
-    assert_feqrerr("Wrong value for the low root", ret.low, x1, .000001);
+    assert_feqaerr("Wrong value for the high root", ret.high, x2, .0001);
+    assert_feqaerr("Wrong value for the low root", ret.low, x1, .0001);
 
 
     //LINEAR TESTS/VARIABLES
     numroots = 1;
-    x1 = (1.1*3.0) - 3.8;
-    x2=0;
+    x1 = -0.5;
+    x2 = 0;
     a = 1.0;		//a=1
-    b = (1.1*3.0) - 1.3;		//b=2
-    c = (1.1*3.0) - 2.3;		//c=1
+    b = 2.0;		//b=2
+    c = 1.0;		//c=1
     ret2 = linear(b, c);
     assert_eq("Wrong number of roots",ret2.numroots, numroots);
-    assert_feqrerr("Wrong value for the low root", ret2.low, x1, .000001);
+    assert_feqaerr("Wrong value for the low root", ret2.low, x1, .000001);
 }

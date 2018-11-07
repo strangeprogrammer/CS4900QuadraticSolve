@@ -11,7 +11,7 @@
 
 int main() {
     
-    printf("---- ANY ERROR STARTING WITH \"*\" IS EXPECTED IN TESTS AND SHOULD BE IGNORED ----\n");    //NO AVOIDING
+    printf("\n---- ANY ERROR STARTING WITH \"*\" IS EXPECTED IN TESTS AND SHOULD BE IGNORED ----\n");    //NO AVOIDING
     
 	fpstatus ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8, ret9;
 	cunit_init();
@@ -20,23 +20,19 @@ int main() {
 	ret3 = getarg("-1");	//negative int
 	ret4 = getarg("2.00");		//decimal
 	ret5 = getarg("-2.00");		//negative decimal
-	//ERRORS: (THEY PRINT AN ERROR MESSAGE THAT CANT BE SIPRESSED :(
+	//ERRORS: (THEY PRINT AN ERROR MESSAGE THAT CANT BE SIPRESSED :(    //redirect to output devnull
 	ret6 = getarg(".00000000000000000000000000000000000000000000043");   //Underflow x
 	ret7 = getarg("100000000000000000000000000000000000000000000043");   //Overflow x
 	ret8 = getarg("hello");    //Word x
 	ret9 = getarg("nan");          //nan x
 
-	assert_feqrerr("Zero", ret1.f, 0.0, 0.0000001);
-	assert_feqrerr("int", ret2.f, 1.0, 0.0000001);
-	assert_feqrerr("negative int", ret3.f, -1.0, 0.0000001);
-	assert_feqrerr("decimal", ret4.f, 2.0, 0.0000001);
-	assert_feqrerr("negative decimal", ret5.f, -2.0, 0.0000001);
-    double k = ret6.e;
-	assert_feqrerr("underflow", k, 3.0, 0.0000001);
-    double k2 = ret7.e;
-	assert_feqrerr("overflow", k2, 4.0, 0.0000001);
-    double k3 = ret8.e;
-	assert_feqrerr("word", k3, 2.0, 0.0000001);
-    double k4 = ret9.e;
-	assert_feqrerr("nan", k4, 5.0, 0.0000001);
+	assert_feqaerr("Zero", ret1.f, 0.0, 0.0000001);
+	assert_feqaerr("int", ret2.f, 1.0, 0.0000001);
+	assert_feqaerr("negative int", ret3.f, -1.0, 0.0000001);
+	assert_feqaerr("decimal", ret4.f, 2.0, 0.0000001);
+	assert_feqaerr("negative decimal", (double) ret5.f, -2.0, 0.0000001);
+	assert_feqaerr("underflow", (double) ret6.e, 3.0, 0.0000001);
+	assert_feqaerr("overflow", (double) ret7.e, 4.0, 0.0000001);
+	assert_feqaerr("word", (double) ret8.e, 2.0, 0.0000001);
+	assert_feqaerr("nan", (double) ret9.e, 5.0, 0.0000001);
 }
