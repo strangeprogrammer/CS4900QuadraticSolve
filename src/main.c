@@ -7,6 +7,7 @@
 #include "fp/validate.h"
 
 int main(int argc,char* argv[]){
+	//Get arguments while error checking
 	if(!checkargs(argc)){
 		return NUMARG_ERR;
 	}
@@ -42,7 +43,7 @@ int main(int argc,char* argv[]){
 		break;
 	}
 	if(x.numroots&&
-	!validate(a.f,b.f,c.f,x)){
+	!validate(a.f,b.f,c.f,x)){//Throw a warning if the solutions aren't accurate enough
 		fprintf(stderr,"Warning: The input given does not solve the answer with a precision of '0.0001'.\n");
 	}
 	return SUCCESS;

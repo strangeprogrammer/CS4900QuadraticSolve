@@ -10,13 +10,17 @@ bool checkargs(int argc){
 	return true;
 }
 
+//Parse a float if possible, else return an error
 fpstatus getarg(char arg[]){
 	char* end;
 	errno=0;
 	float parsed=strtof(arg,&end);
-	fpstatus retval={.f=0,.e=SUCCESS};
-	if(parsed==0||fpclassify(parsed)==FP_ZERO){
-		if(end==arg){
+	fpstatus retval={
+		.f=0,
+		.e=SUCCESS
+	};
+	if(parsed==0||fpclassify(parsed)==FP_ZERO){//If we got a 0 back
+		if(end==arg){//If strtof didn't convert anything
 			fprintf(stderr,"*Error: could not convert argument '%s' to a float.\n",arg);
 			retval.e=BADARG_ERR;
 		}else if(errno==ERANGE){
@@ -30,8 +34,6 @@ fpstatus getarg(char arg[]){
 		fprintf(stderr,"*Error: argument '%s' is not a number.\n",arg);
 		retval.e=NANARG_ERR;
 	}
-	retval.f=parsed;
+	retval.f=parsed;//Huzzah, it worked!
 	return retval;
 }
-
-//fpstatus.f is individual arguments
