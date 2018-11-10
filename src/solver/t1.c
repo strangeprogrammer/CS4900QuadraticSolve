@@ -6,11 +6,9 @@
 */
 
 #include <stdlib.h>
-#include "cunit.h"
-#include "../solver/quadratic.h"
-#include "../solver/linear.h"
-//#include "mock_quadratic.h"
-//#include "mock_linear.h"
+#include "../cunit.h"
+#include "quadratic.h"
+#include "linear.h"
 #include "../misc.h"
 
 
