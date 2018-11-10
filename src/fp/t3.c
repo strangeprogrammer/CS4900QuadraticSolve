@@ -5,8 +5,8 @@
 */
 
 #include <stdlib.h>
-#include "cunit.h"
-#include "../fp/ieee.h"
+#include "../cunit.h"
+#include "ieee.h"
 
 int main() {
 

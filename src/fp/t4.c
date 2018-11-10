@@ -5,8 +5,8 @@
 */
 
 #include <stdlib.h>
-#include "cunit.h"
-#include "../fp/validate.h"
+#include "../cunit.h"
+#include "validate.h"
 
 int main(){
 
