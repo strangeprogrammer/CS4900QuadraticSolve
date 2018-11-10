@@ -17,20 +17,16 @@ fpstatus getarg(char arg[]){
 	char* end;
 	errno=0;
 	float parsed=strtof(arg,&end);
-<<<<<<< HEAD
-	fpstatus retval={
-		.f=0,
-		.e=SUCCESS
-	};
+	fpstatus retval={.f=0, .e=SUCCESS};
 	if(parsed==0||fpclassify(parsed)==FP_ZERO){//If we got a 0 back
 		if(end==arg){//If strtof didn't convert anything
 			fprintf(stderr,"*Error: could not convert argument '%s' to a float.\n",arg);
-=======
-	fpstatus retval={.f=0,.e=SUCCESS};
+            fpstatus retval={.f=0,.e=SUCCESS};
+        }
+    }
 	if(parsed==0||fpclassify(parsed)==FP_ZERO){
 		if(end==arg){
 			fprintf(stderr, "Error: could not convert argument '%s' to a float.\n",arg);
->>>>>>> local4900
 			retval.e=BADARG_ERR;
 		}else if(errno==ERANGE){
 			fprintf(stderr, "Error: argument '%s' causes underflow.\n",arg);
