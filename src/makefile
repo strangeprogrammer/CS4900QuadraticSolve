@@ -54,6 +54,8 @@ fp/t3.o : cunit.h fp/ieee.h
 
 fp/t4.o : cunit.h misc.h fp/validate.h fp/ieee.h
 
+fp/validate_feq_test.o : cunit.h fp/validate.h fp/mock_validate_feq.h
+
 
 #Miscellaneous
 

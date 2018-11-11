@@ -22,7 +22,7 @@ int main() {		//Need to check intercept values and number of roots value
     x1 = 3.1;
     x2 = 3.3;		//scratch variables
     a = 1.0;
-    b = -x1 + -x2;	//b=-.6.4
+    b = -x1 + -x2;	//b=-.6.4, account for rounding
     c = x1 * x2;	//a,b,c values		c=10.23
     ret = quadratic(a, b, c);
     assert_eq("Wrong number of roots",ret.numroots, numroots);

@@ -20,7 +20,7 @@ int main() {
 	ret4 = getarg("2.00");		//decimal
 	ret5 = getarg("-2.00");		//negative decimal
 
-	//ERRORS: (THEY PRINT AN ERROR MESSAGE THAT CANT BE SIPRESSED :(
+	//ERRORS: (THEY PRINT AN ERROR MESSAGE THAT IS SUPRESSED
 	freopen ("/dev/null", "w", stderr); // Expected errors - send output(stderr) to devnull
 	ret6 = getarg(".00000000000000000000000000000000000000000000043");   //Underflow x
 	ret7 = getarg("100000000000000000000000000000000000000000000043");   //Overflow x
@@ -29,13 +29,14 @@ int main() {
 	fclose(stdout);
 	stdout = fdopen(old_stdout, "w");	//Go back to old output
 
+    //Check err_no values
 	assert_feqaerr("Zero", ret1.f, 0.0, 0.0000001);
 	assert_feqaerr("int", ret2.f, 1.0, 0.0000001);
 	assert_feqaerr("negative int", ret3.f, -1.0, 0.0000001);
 	assert_feqaerr("decimal", ret4.f, 2.0, 0.0000001);
 	assert_feqaerr("negative decimal", (double) ret5.f, -2.0, 0.0000001);
-	assert_feqaerr("underflow", (double) ret6.e, 3.0, 0.0000001);
-	assert_feqaerr("overflow", (double) ret7.e, 4.0, 0.0000001);
-	assert_feqaerr("word", (double) ret8.e, 2.0, 0.0000001);
-	assert_feqaerr("nan", (double) ret9.e, 5.0, 0.0000001);
+	assert_feq("underflow", (double) ret6.e, 3.0);
+	assert_feq("overflow", (double) ret7.e, 4.0);
+	assert_feq("word", (double) ret8.e, 2.0);
+	assert_feq("nan", (double) ret9.e, 5.0);
 }
