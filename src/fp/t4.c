@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "../cunit.h"
 #include "validate.h"
+//#include "mock_validate_feq.h"
 
 int main(){
 
@@ -14,7 +15,7 @@ int main(){
 	cunit_init();		// initialize the unit testing framework
 	float a, b, c, x;
 	intercepts y = {y.low=2, y.high=1, y.numroots=1};
-	intercepts y2 = {y2.low=0, y2.high=0, y2.numroots=2};
+	intercepts y2 = {y2.low=0, y2.high=0, y2.numroots=1};
 
 	a=2; b=2; c=2;
 	bool k = validate(a,b,c,y);
@@ -22,7 +23,7 @@ int main(){
 
 	a=0; b=0; c=-0;
 	bool k2 = validate(a, b, c, y2);
-	assert_eq("ret", k2, 1);		//t2
+	assert_eq("ret", k2, 1);		//t2//
 
 
 	//VALIDATE_ISQUAD TESTS/VARIABLES
@@ -41,4 +42,11 @@ int main(){
 	b = 2.0;		//b=2
 	c = 1.0;		//c=1
 	assert_feqrerr("quadfunc return is not working", quadfunc(a, b, c, x), 3.00, .000001);
+
+
+    //VALIDATE() calls feq() so we use mock object to test
+
+
+
+
 }

@@ -24,9 +24,9 @@ $(OBJECTS) : force
 #For the tests
 
 runall : solver/t1.o parsing/t2.o fp/t3.o fp/t4.o
-	./t1 && ./t2 && ./t3 && ./t4
+	./t1 && ./t2 && ./t3 && ./t4 && ./t5
 
-tests : t1 t2 t3 t4
+tests : t1 t2 t3 t4 t5
 	$(t1) $(t2) $(t3) $(t4) $(t5)
 
 t1 : solver/t1.o cunit.o solver/quadratic.o solver/linear.o fp/ieee.o
@@ -40,6 +40,9 @@ t3 : fp/t3.o cunit.o fp/ieee.o
 
 t4 : fp/t4.o cunit.o fp/validate.o fp/ieee.o
 	$(LINK) t4 fp/t4.o cunit.o fp/validate.o fp/ieee.o -lm
+
+t5 : fp/validate_feq_test.o cunit.o fp/mock_validate_feq.o fp/validate.o
+	$(LINK) t5 fp/validate_feq_test.o cunit.o fp/mock_validate_feq.o fp/validate.o -lm
 
 
 #Dependencies from headers
@@ -67,3 +70,4 @@ squeaky : clean
 	rm -f t2 &>/dev/null
 	rm -f t3 &>/dev/null
 	rm -f t4 &>/dev/null
+	rm -f t5 &>/dev/null
