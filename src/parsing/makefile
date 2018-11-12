@@ -7,7 +7,7 @@ parsing.o : parsing.c ../libraries.h parsing.h ../misc.h
 
 #For the tests
 
-t2.o : t2.c ../cunit.h parsing.h
+t2.o : t2.c ../cunit.h parsing.h ../libraries.h ../misc.h
 	$(COMP) $@ $<
 
 t2 : t2.o ../cunit.o parsing.o

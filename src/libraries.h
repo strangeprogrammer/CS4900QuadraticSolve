@@ -5,5 +5,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <errno.h>
+#include <unistd.h>
 
 #endif //LIBRARIES_H
