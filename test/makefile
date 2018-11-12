@@ -15,7 +15,7 @@ NANARG_ERR	= 5
 
 export NUMARG_ERR BADARG_ERR UNDERFLOW_ERR OVERFLOW_ERR NANARG_ERR
 
-all : numarg badarg overflow underflow nanarg
+test : numarg badarg overflow underflow nanarg
 
 .SILENT :
 

@@ -6,7 +6,6 @@ All of the implementation files in this directory are used for important calcula
 Implementation files:
 	- linear.c, linear.h
 	- quadratic.c, quadratic.h
-	- makefile
 
 Test files:
 	- t1.c

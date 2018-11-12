@@ -5,7 +5,6 @@ All of the implementation files in this directory used for retrieving and checki
 
 Implementation files:
 	- parsing.c, parsing.h
-	- makefile
 
 Test files:
 	- t2.c
