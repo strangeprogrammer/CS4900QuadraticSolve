@@ -11,7 +11,8 @@ OBJECTS :=	fp/ieee.o		\
 TESTS :=	solver/t1	\
 		parsing/t2	\
 		fp/t3		\
-		fp/t4
+		fp/t4		\
+		fp/t5
 
 #For the actual program
 
@@ -28,17 +29,13 @@ $(OBJECTS) : force
 
 #For the tests
 
-test : $(TESTS) t5
+test : $(TESTS)
 	$(MAKE) -C solver test
 	$(MAKE) -C parsing test
 	$(MAKE) -C fp test
-	./t5
 
 $(TESTS) : force
 	$(MAKE) -C  $(dir $@) $(notdir $@)
-
-t5 : fp/validate_feq_test.o cunit.o fp/mock_validate_feq.o fp/validate.o
-	$(LINK) $@ $^ -lm
 
 #Miscellaneous
 
@@ -52,4 +49,3 @@ squeaky :: clean
 	$(MAKE) -C parsing squeaky
 	$(MAKE) -C solver squeaky
 	rm -f quadsolve &>/dev/null
-	rm -f t5 &>/dev/null

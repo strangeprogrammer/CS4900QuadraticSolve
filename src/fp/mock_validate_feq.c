@@ -17,27 +17,27 @@
 // The mock feq() does keep track of the number of times
 //    it is called, which should only be 1.
 
-#include <math.h>
+#include "../libraries.h"
 #include "mock_validate_feq.h"
 #include "ieee.h"
 #include "../misc.h"
 
 
-static float x = -1.0;	//actual argument x passed to  feq()
-static float y = -1.0; 	//actual argument y passed to feq()
-static float ex = -1.0; //expected argument x to feq()
-static float ey = -1.0; //expected argument y to feq()
-static double eps = -1.0; //absolure error allowed in x
-static bool feqxy = false; //result to return from feq()
-static int count = 0;	//atual count of calls feq() made
+static float x = -1.0;		//actual argument x passed to  feq()
+static float y = -1.0;		//actual argument y passed to feq()
+static float ex = -1.0;		//expected argument x to feq()
+static float ey = -1.0;		//expected argument y to feq()
+static double eps = -1.0;	//absolure error allowed in x
+static bool feqxy = false;	//result to return from feq()
+static int count = 0;		//actual count of calls feq() made
 static int flag = -1;
 
 // initialize to expect 1 call to the mock feq()
 // expecting arguement lx within leps absolute error
 // return    result    lfeqxy
 void mock_setup_validate_feq(float lx, float ly, bool lfeqxy, double leps){
-	ex = x;
-	ey = y;
+	ex = lx;
+	ey = ly;
 	eps = leps;
 	feqxy = lfeqxy;
 	count = 0;
@@ -74,14 +74,10 @@ int mock_check_validate_feq(int *lcount, float *lx, float *ly){
 }
 
 //Tear down for another test
-void mock_teardown_qsolve_sqrt(){
+void mock_validate_feq_init(){
 	x = -1.0;
 	y = -1.0;
-	ex = -1.0;
-	ey = -1.0;
-	eps = -1.0;
-	feqxy = false;
-	count = 0;
+	mock_setup_validate_feq(-1.0,-1.0,false,-1.0);
 	flag = -1;
 	return;
 }
