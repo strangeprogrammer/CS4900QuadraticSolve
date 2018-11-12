@@ -37,6 +37,12 @@ int main(){
 	//These tests' expected errors are suppressed by sending the output to '/dev/null'
 	int old_stderr = dup(fileno(stderr));
 	freopen("/dev/null", "w", stderr);
+	assert_eq("checkargs not working properly",checkargs(0),false);
+	assert_eq("checkargs not working properly",checkargs(1),false);
+	assert_eq("checkargs not working properly",checkargs(2),false);
+	assert_eq("checkargs not working properly",checkargs(3),false);
+	assert_eq("checkargs not working properly",checkargs(4),true);
+	assert_eq("checkargs not working properly",checkargs(5),false);
 	ret6 = getarg(".00000000000000000000000000000000000000000000043");   //Underflow x
 	ret7 = getarg("100000000000000000000000000000000000000000000043");   //Overflow x
 	ret8 = getarg("hello");		//Word x
