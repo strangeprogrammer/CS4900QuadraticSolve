@@ -1,11 +1,7 @@
 #include "../misc.h"
+#include "quadfunc.h"
 #include "validate.h"
 #include "ieee.h"
-
-//Evaluate the function at the given x-value
-float quadfunc(float a,float c,float b,float x){
-	return a*x*x+b*x+c;
-}
 
 //Check that the intercepts are solutions for the quadratic
 bool validate(float a,float b,float c,intercepts x){

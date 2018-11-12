@@ -5,32 +5,37 @@ include ../make.i
 ieee.o : ieee.c ../libraries.h ../misc.h
 	$(COMP) $@ $<
 
-validate.o : validate.c ../misc.h validate.h ieee.h
+quadfunc.o : quadfunc.c quadfunc.h
+	$(COMP) $@ $<
+
+validate.o : validate.c validate.h quadfunc.h ieee.h ../misc.h
 	$(COMP) $@ $<
 
 #Mock objects
 
-validate_feq_test.o : validate_feq_test.c ../cunit.h validate.h mock_validate_feq.h
+mock_validate_deps.o : mock_validate_deps.c ../cunit.h ../misc.h quadfunc.h validate.h ieee.h
 	$(COMP) $@ $<
 
-mock_validate_feq.o : mock_validate_feq.c mock_validate_feq.h ../libraries.h  ieee.h ../misc.h
-	$(COMP) $@ $<
-
-#For the tests
+#Intermediate testing objects
 
 t3.o : t3.c ../cunit.h ieee.h
 	$(COMP) $@ $<
 
+t4.o : t4.c ../cunit.h quadfunc.h
+	$(COMP) $@ $<
+
+t5.o : t5.c ../cunit.h validate.h
+	$(COMP) $@ $<
+
+#For the tests
+
 t3 : t3.o ../cunit.o ieee.o
 	$(LINK) $@ $^ -lm
 
-t4.o : t4.c ../cunit.h ../misc.h validate.h ieee.h
-	$(COMP) $@ $<
-
-t4 : t4.o ../cunit.o validate.o ieee.o
+t4 : t4.o ../cunit.o quadfunc.o
 	$(LINK) $@ $^ -lm
 
-t5 : validate_feq_test.o ../cunit.o mock_validate_feq.o validate.o
+t5 : t5.o ../cunit.o mock_validate_deps.o validate.o
 	$(LINK) $@ $^ -lm
 
 test : t3 t4 t5

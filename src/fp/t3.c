@@ -4,7 +4,6 @@
 *		Both return bools
 */
 
-#include "../libraries.h"
 #include "../cunit.h"
 #include "ieee.h"
 
@@ -20,4 +19,6 @@ int main(){
 	assert_eq("feq not working right", feq((1.1*5) - 2.2,	3.3),	true);
 	assert_eq("feq not working right", feq((1.1*3) - 3,	.3),	true);
 	assert_eq("feq not working right", feq(3,		2),	false);
+	
+	return 0;
 }

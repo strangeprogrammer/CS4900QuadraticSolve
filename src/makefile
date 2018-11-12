@@ -3,6 +3,7 @@ include make.i
 #Useful Macros
 
 OBJECTS :=	fp/ieee.o		\
+		fp/quadfunc.o		\
 		fp/validate.o		\
 		parsing/parsing.o	\
 		solver/linear.o		\
