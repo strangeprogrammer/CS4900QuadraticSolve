@@ -7,9 +7,11 @@ LINK	:= $(CC) $(CFLAGS) -o
 
 #Miscellaneous
 
-.PHONY : default clean force
+.PHONY : default clean force squeaky
 
 default ::
 
 clean ::
 	rm -f *.o &>/dev/null
+
+squeaky :: clean
