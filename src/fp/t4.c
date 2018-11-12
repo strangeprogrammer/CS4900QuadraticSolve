@@ -4,7 +4,7 @@
 *		quadfunc returns float and validate returns bools
 */
 
-#include <stdlib.h>
+#include "../libraries.h"
 #include "../cunit.h"
 #include "validate.h"
 

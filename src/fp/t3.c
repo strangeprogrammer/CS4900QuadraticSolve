@@ -4,7 +4,7 @@
 *		Both return bools
 */
 
-#include <stdlib.h>
+#include "../libraries.h"
 #include "../cunit.h"
 #include "ieee.h"
 
