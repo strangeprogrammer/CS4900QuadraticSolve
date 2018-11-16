@@ -8,4 +8,4 @@ Implementation files:
 	- qs_tokenizer.c, quadSolver.h
 
 Test files:
-	- 
+	- logs/		//Tracks output from program runs using fileIn.txt

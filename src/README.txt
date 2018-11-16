@@ -16,6 +16,7 @@ misc.h		//Contains some useful typedefs
 parsing/	//Parses the given input and returns an error if it's invalid
 README.txt	//You're reading me right now!
 solver/		//The actual quadratic equation solver
+input/		//Retrieves raw user input and converts it to a,b, and c values
 
 
 
@@ -29,3 +30,5 @@ To make all the tests and run them, type 'make test'.
 To remove all object files recursively, type 'make clean'.
 
 To remove all object files and binary files recursively, type 'make squeaky'.
+
+To run the program using fileIn.txt, type 'make run'.

@@ -6,5 +6,6 @@
 #include <math.h>
 #include <errno.h>
 #include <unistd.h>
+#include <string.h>
 
 #endif //LIBRARIES_H
