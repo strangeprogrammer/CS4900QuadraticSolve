@@ -8,6 +8,8 @@ token.o:	qs_tokenizer.c ../libraries.h ../misc.h
 
 #For testing
 
+test :
+
 #Misc.
 squeaky :: clean
 		rm -f t2 &>/dev/null
