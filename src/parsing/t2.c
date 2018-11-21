@@ -51,8 +51,8 @@ int main(){
 	fclose(stderr);
 	stderr = fdopen(old_stderr, "w");
 	//Check err_code values
-	assert_eq("underflow",			ret6.e, UNDERFLOW_ERR);
-	assert_eq("overflow",			ret7.e, OVERFLOW_ERR);
-	assert_eq("word",			ret8.e, BADARG_ERR);
-	assert_eq("nan",			ret9.e, NANARG_ERR);
+	assert_eq("underflow",ret6.e, UNDERFLOW_ERR);
+	assert_eq("overflow",ret7.e, OVERFLOW_ERR);
+	assert_eq("word",ret8.e, BADARG_ERR);
+	assert_eq("nan",ret9.e, NANARG_ERR);
 }
