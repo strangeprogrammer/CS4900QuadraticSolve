@@ -39,6 +39,7 @@ run:
 test : $(TESTS)
 	$(MAKE) -C solver test
 	$(MAKE) -C parsing test
+	$(MAKE) -C input test
 	$(MAKE) -C fp test
 
 $(TESTS) : force
@@ -48,11 +49,13 @@ $(TESTS) : force
 
 clean ::
 	$(MAKE) -C fp clean
+	$(MAKE) -C input clean
 	$(MAKE) -C parsing clean
 	$(MAKE) -C solver clean
 
 squeaky :: clean
 	$(MAKE) -C fp squeaky
+	$(MAKE) -C input squeaky
 	$(MAKE) -C parsing squeaky
 	$(MAKE) -C solver squeaky
 	rm -f quadsolve &>/dev/null
