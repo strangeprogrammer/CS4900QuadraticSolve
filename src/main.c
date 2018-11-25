@@ -1,58 +1,44 @@
 #include "libraries.h"
 #include "misc.h"
-#include "parsing/parsing.h"
+
 #include "fp/ieee.h"
+#include "fp/validate.h"
+#include "parsing/parsing.h"
 #include "solver/linear.h"
 #include "solver/quadratic.h"
-#include "fp/validate.h"
 
 int main(int argc,char* argv[]){
-	char *input = malloc(sizeof(char)*MAX_UI_SIZE);
-	Values *vals_M;
-
-
-	// //Get arguments while error checking
-	// if(!checkargs(argc)){
-	// 	return NUMARG_ERR;
-	// }
-	printf("Please enter 3 numbers: ");
-	// //Get raw user input from terminal
-	input = userInput();
-	// // printf("\nInput %s\n", input);
-
-	// //Split raw user input into three values
-	vals_M = tokenizer(input);
+	//Get/Validate input
+	if(!checkargs(argc))
+		return NUMARG_ERR;
 	
-	while(vals_M->count != 3){
-		printf("Invalid, number of args. Please enter 3 numbers: \n");
-		input = userInput();
-		vals_M = tokenizer(input);
-	}
-
-	printf("Num 1: %s\n",vals_M->num1);
-	printf("Num 2: %s\n",vals_M->num2);
-	printf("Num 3: %s\n",vals_M->num3);
-
-	fpstatus a=getarg(vals_M->num1);
+	fpstatus a=getarg(argv[1]);
 	if(a.e)
 		return a.e;
-	fpstatus b=getarg(vals_M->num2);
+	
+	fpstatus b=getarg(argv[2]);
 	if(b.e)
 		return b.e;
-	fpstatus c=getarg(vals_M->num3);
+	
+	fpstatus c=getarg(argv[3]);
 	if(c.e)
 		return c.e;
+	
+	//Try to perform quadratic solve
 	intercepts x={
 		.low=0,
 		.high=0,
 		.numroots=0
 	};
+	//Switch upon quadratic/linear
 	if(isquad(a.f,b.f,c.f)){
 		x=quadratic(a.f,b.f,c.f);
 	}else{
 		fprintf(stderr,"Warning: The input given is being interpreted as a linear equation instead of a quadratic one.\n");
 		x=linear(b.f,c.f);
 	}
+	
+	//Give different output based on number of roots
 	switch(x.numroots){
 	case 0:
 		printf("There are 0 x-intercepts.\n");
@@ -64,9 +50,12 @@ int main(int argc,char* argv[]){
 		printf("There are 2 x-intercepts: %f, %f\n",x.low,x.high);
 		break;
 	}
+	
+	//Throw a warning if the solutions aren't accurate enough
 	if(x.numroots&&
-	!validate(a.f,b.f,c.f,x)){//Throw a warning if the solutions aren't accurate enough
+	!validate(a.f,b.f,c.f,x)){
 		fprintf(stderr,"Warning: The input given does not solve the answer with a precision of '0.0001'.\n");
 	}
+	
 	return SUCCESS;
 }
