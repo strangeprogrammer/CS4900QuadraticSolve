@@ -13,10 +13,10 @@ t2.o : t2.c ../cunit/cunit.h parsing.h ../libraries.h ../misc.h
 t2 : t2.o ../cunit/cunit.o parsing.o
 	$(LINK) $@ $^ -lm
 
-test : t2
+test :: t2
 	./t2
 
 #Miscellaneous
 
-squeaky :: clean
+squeaky ::
 	rm -f t2 &>/dev/null

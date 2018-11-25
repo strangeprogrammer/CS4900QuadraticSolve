@@ -7,7 +7,7 @@ LINK	:= $(CC) $(CFLAGS) -o
 
 #Miscellaneous
 
-.PHONY : default clean force squeaky
+.PHONY : default clean force squeaky test
 
 default ::
 

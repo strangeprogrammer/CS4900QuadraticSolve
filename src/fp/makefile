@@ -38,14 +38,22 @@ t4 : t4.o ../cunit/cunit.o quadfunc.o
 t5 : t5.o ../cunit/cunit.o mock_validate_deps.o validate.o
 	$(LINK) $@ $^ -lm
 
-test : t3 t4 t5
+test :: t3
 	./t3
+
+test :: t4
 	./t4
+
+test :: t5
 	./t5
 
 #Miscellaneous
 
-squeaky :: clean
+squeaky ::
 	rm -f t3 &>/dev/null
+
+squeaky ::
 	rm -f t4 &>/dev/null
+
+squeaky ::
 	rm -f t5 &>/dev/null
