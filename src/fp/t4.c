@@ -1,4 +1,4 @@
-#include "../cunit.h"
+#include "../cunit/cunit.h"
 #include "quadfunc.h"
 
 int main(){

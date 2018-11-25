@@ -2,7 +2,7 @@
 #include "quadfunc.h"
 #include "ieee.h"
 #include "validate.h"
-#include "../cunit.h"
+#include "../cunit/cunit.h"
 
 static int count_feq=0;
 

@@ -10,10 +10,10 @@ quadratic.o : quadratic.c quadratic.h ../libraries.h ../fp/ieee.h
 
 #For the tests
 
-t1.o : t1.c ../cunit.h quadratic.h linear.h ../misc.h
+t1.o : t1.c ../cunit/cunit.h quadratic.h linear.h ../misc.h
 	$(COMP) $@ $<
 
-t1 : t1.o ../cunit.o quadratic.o linear.o ../fp/ieee.o
+t1 : t1.o ../cunit/cunit.o quadratic.o linear.o ../fp/ieee.o
 	$(LINK) $@ $^ -lm
 
 test : t1

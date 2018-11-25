@@ -6,7 +6,7 @@
 */
 
 #include "../libraries.h"
-#include "../cunit.h"
+#include "../cunit/cunit.h"
 #include "quadratic.h"
 #include "linear.h"
 #include "../misc.h"

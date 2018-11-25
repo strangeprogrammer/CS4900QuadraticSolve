@@ -3,6 +3,8 @@ ts := $(shell /bin/date "+%Y-%m-%d_%H:%M:%S")
 
 #Useful Macros
 
+CUNIT :=	cunit/cunit.o
+
 OBJECTS :=	fp/ieee.o		\
 		fp/quadfunc.o		\
 		fp/validate.o		\
@@ -28,15 +30,15 @@ quadsolve : main.o $(OBJECTS)
 main.o : main.c libraries.h misc.h parsing/parsing.h
 	$(COMP) $@ $<
 
-$(OBJECTS) : force
+$(OBJECTS) $(CUNIT) : force
 	$(MAKE) -C  $(dir $@) $(notdir $@)
 
-run:
+run :
 	@./quadsolve < fileIn.txt > input/logs/fileOut.txt | mv input/logs/fileOut.txt input/logs/$(ts)_log.txt
 
 #For the tests
 
-test : $(TESTS)
+test : $(TESTS) $(CUNIT)
 	$(MAKE) -C solver test
 	$(MAKE) -C parsing test
 	$(MAKE) -C input test
