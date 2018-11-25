@@ -1,0 +1,6 @@
+Please enter 3 numbers: 
+
+Invalid, number of args. Please enter 3 numbers: 
+
+
+There are 0 x-intercepts.

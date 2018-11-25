@@ -10,7 +10,6 @@ OBJECTS :=	fp/ieee.o		\
 		solver/linear.o		\
 		solver/quadratic.o 	\
 		input/input.o 		\
-		input/token.o
 
 TESTS :=	solver/t1	\
 		parsing/t2	\
@@ -30,8 +29,11 @@ main.o : main.c libraries.h misc.h parsing/parsing.h
 
 $(OBJECTS) : force
 	$(MAKE) -C  $(dir $@) $(notdir $@)
-
 run:
+	@./quadsolve
+
+
+run2:
 	@./quadsolve < fileIn.txt > input/logs/fileOut.txt | mv input/logs/fileOut.txt input/logs/$(ts)_log.txt
 
 #For the tests

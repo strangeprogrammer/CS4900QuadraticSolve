@@ -15,15 +15,21 @@ typedef struct intercepts{
 
 typedef struct values
 {
-	char num1[MAX_UI_SIZE/3];
-	char num2[MAX_UI_SIZE/3];
-	char num3[MAX_UI_SIZE/3];
+
+	char* num1;
+	char* num2;
+	char* num3;
+	// float num1;
+	// float num2;
+	// float num3;
 	int count;
 	
 } Values;
 
-char *userInput();
-Values *tokenizer(char *str);
+
+Values *userInput();
+int checker(char* s);
+void cleanBuff();
 
 typedef enum err_code{
 	SUCCESS=	0,

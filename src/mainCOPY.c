@@ -7,39 +7,17 @@
 #include "fp/validate.h"
 
 int main(int argc,char* argv[]){
-	// char *input = malloc(sizeof(char)*MAX_UI_SIZE);
-	Values *vals_M;
-
-
-	// // //Get arguments while error checking
-	// // if(!checkargs(argc)){
-	// // 	return NUMARG_ERR;
-	// // }
-	// printf("Please enter 3 numbers: ");
-	// // //Get raw user input from terminal
-	// input = userInput();
-	// // // printf("\nInput %s\n", input);
-
-	// //Split raw user input into three values
-	vals_M = userInput();
-	
-	// while(vals_M->count != 3){
-	// 	printf("Invalid, number of args. Please enter 3 numbers: \n");
-	// 	input = userInput();
-	// 	vals_M = tokenizer(input);
-	// }
-
-	printf("Num 1: %s\n",vals_M->num1);
-	printf("Num 2: %s\n",vals_M->num2);
-	printf("Num 3: %s\n",vals_M->num3);
-
-	fpstatus a=getarg(vals_M->num1);
+	//Get arguments while error checking
+	if(!checkargs(argc)){
+		return NUMARG_ERR;
+	}
+	fpstatus a=getarg(argv[1]);
 	if(a.e)
 		return a.e;
-	fpstatus b=getarg(vals_M->num2);
+	fpstatus b=getarg(argv[2]);
 	if(b.e)
 		return b.e;
-	fpstatus c=getarg(vals_M->num3);
+	fpstatus c=getarg(argv[3]);
 	if(c.e)
 		return c.e;
 	intercepts x={

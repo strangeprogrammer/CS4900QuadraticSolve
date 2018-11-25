@@ -7,5 +7,6 @@
 #include <errno.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 #endif //LIBRARIES_H
