@@ -1,0 +1,9 @@
+To install quadsolver on your computer so that it can be accessed from any directory follow these steps:
+- Go to src directory
+- Type command "make install"
+
+*The program will be stored in usr/local.
+
+If you would like to uninstall quadsolver follow these steps:
+- Go to src directory
+- Type command "make uninstall"

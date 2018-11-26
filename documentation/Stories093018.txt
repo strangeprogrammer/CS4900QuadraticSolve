@@ -1,9 +1,0 @@
-Format:
-
-Description | Time (est) | Risk | % Complete | Total time
-
-Input Validation						| 0	| 0	| 100%	| 2hrs
-Put source files in own directories and add unit testing	| ~4hrs	| ~1hr	| 90%	| 4hrs
-Implement Linear Solve						| ~1hr	| ~1hr	| 100%	| 1
-Implement Quadratic Solve					| ~2hr	| ~1hr	| 100%	| 1.5
-Accuracy Testing						| ~3hrs	| ~1hr	| 0%	| N/A
