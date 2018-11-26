@@ -8,4 +8,8 @@
 #include <unistd.h>
 #include <string.h>
 
+//Workarounds for some compiler warnings
+int fileno(FILE *stream);
+FILE *fdopen(int fd, const char *mode);
+
 #endif //LIBRARIES_H

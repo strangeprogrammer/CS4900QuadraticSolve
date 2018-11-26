@@ -6,7 +6,7 @@ CONTENTS:
 
 file		//DESCRIPTION
 
-cunit.{c,h}	//Cunit testing suite source files
+cunit/		//Cunit testing suite
 fp/		//Stuff relating to the floating point internals, not the actual solver
 libraries.h	//Includes all system libraries
 main.c		//The main program

@@ -13,39 +13,47 @@ validate.o : validate.c validate.h quadfunc.h ieee.h ../misc.h
 
 #Mock objects
 
-mock_validate_deps.o : mock_validate_deps.c ../cunit.h ../misc.h quadfunc.h validate.h ieee.h
+mock_validate_deps.o : mock_validate_deps.c ../cunit/cunit.h ../misc.h quadfunc.h validate.h ieee.h
 	$(COMP) $@ $<
 
 #Intermediate testing objects
 
-t3.o : t3.c ../cunit.h ieee.h
+t3.o : t3.c ../cunit/cunit.h ieee.h
 	$(COMP) $@ $<
 
-t4.o : t4.c ../cunit.h quadfunc.h
+t4.o : t4.c ../cunit/cunit.h quadfunc.h
 	$(COMP) $@ $<
 
-t5.o : t5.c ../cunit.h validate.h
+t5.o : t5.c ../cunit/cunit.h validate.h
 	$(COMP) $@ $<
 
 #For the tests
 
-t3 : t3.o ../cunit.o ieee.o
+t3 : t3.o ../cunit/cunit.o ieee.o
 	$(LINK) $@ $^ -lm
 
-t4 : t4.o ../cunit.o quadfunc.o
+t4 : t4.o ../cunit/cunit.o quadfunc.o
 	$(LINK) $@ $^ -lm
 
-t5 : t5.o ../cunit.o mock_validate_deps.o validate.o
+t5 : t5.o ../cunit/cunit.o mock_validate_deps.o validate.o
 	$(LINK) $@ $^ -lm
 
-test : t3 t4 t5
+test :: t3
 	./t3
+
+test :: t4
 	./t4
+
+test :: t5
 	./t5
 
 #Miscellaneous
 
-squeaky :: clean
+squeaky ::
 	rm -f t3 &>/dev/null
+
+squeaky ::
 	rm -f t4 &>/dev/null
+
+squeaky ::
 	rm -f t5 &>/dev/null

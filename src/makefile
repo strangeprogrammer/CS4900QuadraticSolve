@@ -1,61 +1,76 @@
 include make.i
+
 ts := $(shell /bin/date "+%Y-%m-%d_%H:%M:%S")
 
 #Useful Macros
+
+CUNIT :=	cunit/cunit.o
 
 OBJECTS :=	fp/ieee.o		\
 		fp/quadfunc.o		\
 		fp/validate.o		\
 		parsing/parsing.o	\
 		solver/linear.o		\
-		solver/quadratic.o 	\
-		input/input.o 		\
-		input/token.o
+		solver/quadratic.o
 
-TESTS :=	solver/t1	\
-		parsing/t2	\
-		fp/t3		\
+TESTS :=	fp/t3		\
 		fp/t4		\
-		fp/t5
+		fp/t5		\
+		parsing/t2	\
+		solver/t1
 
 #For the actual program
 
 default :: quadsolve
 
-quadsolve : main.o $(OBJECTS)
+quadsolve : main.o $(OBJECTS) misc.o
 	$(LINK) $@ $^ -lm
 
 main.o : main.c libraries.h misc.h parsing/parsing.h
 	$(COMP) $@ $<
 
-$(OBJECTS) : force
-	$(MAKE) -C  $(dir $@) $(notdir $@)
-
-run:
-	@./quadsolve < fileIn.txt > input/logs/fileOut.txt | mv input/logs/fileOut.txt input/logs/$(ts)_log.txt
+misc.o : misc.c misc.h
+	$(COMP) $@ $<
 
 #For the tests
 
-test : $(TESTS)
-	$(MAKE) -C solver test
-	$(MAKE) -C parsing test
-	$(MAKE) -C input test
+test :: $(TESTS) $(CUNIT)
 	$(MAKE) -C fp test
 
-$(TESTS) : force
-	$(MAKE) -C  $(dir $@) $(notdir $@)
+test :: $(TESTS) $(CUNIT)
+	$(MAKE) -C parsing test
+
+test :: $(TESTS) $(CUNIT)
+	$(MAKE) -C solver test
 
 #Miscellaneous
 
+$(CUNIT) $(OBJECTS) $(TESTS) : force
+	$(MAKE) -C  $(dir $@) $(notdir $@)
+
+clean ::
+	$(MAKE) -C cunit clean
+
 clean ::
 	$(MAKE) -C fp clean
-	$(MAKE) -C input clean
+
+clean ::
 	$(MAKE) -C parsing clean
+
+clean ::
 	$(MAKE) -C solver clean
 
-squeaky :: clean
+squeaky ::
+	$(MAKE) -C cunit squeaky
+
+squeaky ::
 	$(MAKE) -C fp squeaky
-	$(MAKE) -C input squeaky
+
+squeaky ::
 	$(MAKE) -C parsing squeaky
+
+squeaky ::
 	$(MAKE) -C solver squeaky
+
+squeaky ::
 	rm -f quadsolve &>/dev/null

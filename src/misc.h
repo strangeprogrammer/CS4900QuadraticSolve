@@ -1,6 +1,5 @@
 #ifndef MISC_H
 #define MISC_H
-#define MAX_UI_SIZE 100
 
 typedef enum bool{
 	true=	1,
@@ -13,18 +12,6 @@ typedef struct intercepts{
 	int numroots;
 } intercepts;
 
-typedef struct values
-{
-	char num1[MAX_UI_SIZE/3];
-	char num2[MAX_UI_SIZE/3];
-	char num3[MAX_UI_SIZE/3];
-	int count;
-	
-} Values;
-
-char *userInput();
-Values *tokenizer(char *str);
-
 typedef enum err_code{
 	SUCCESS=	0,
 	NUMARG_ERR=	1,
@@ -34,7 +21,6 @@ typedef enum err_code{
 	NANARG_ERR=	5
 } err_code;
 
-
-
+extern char* err_str[];
 
 #endif //MISC_H

@@ -6,7 +6,7 @@
 */
 #include "../libraries.h"
 #include "../misc.h"
-#include "../cunit.h"
+#include "../cunit/cunit.h"
 #include "parsing.h"
 
 //NOTE: There are some compiling warnings that are *really* hard to remove regarding the declaration of 'fdopen' and 'fileno' (though this doesn't impact functionality)
