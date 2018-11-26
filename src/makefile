@@ -23,10 +23,13 @@ TESTS :=	fp/t3		\
 
 default :: quadsolve
 
-quadsolve : main.o $(OBJECTS)
+quadsolve : main.o $(OBJECTS) misc.o
 	$(LINK) $@ $^ -lm
 
 main.o : main.c libraries.h misc.h parsing/parsing.h
+	$(COMP) $@ $<
+
+misc.o : misc.c misc.h
 	$(COMP) $@ $<
 
 #For the tests

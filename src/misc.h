@@ -21,4 +21,6 @@ typedef enum err_code{
 	NANARG_ERR=	5
 } err_code;
 
+extern char* err_str[];
+
 #endif //MISC_H
