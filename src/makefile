@@ -34,19 +34,28 @@ misc.o : misc.c misc.h
 
 #For the tests
 
-test :: $(TESTS) $(CUNIT)
+.PHONY : functional unit
+
+test :: functional unit
+
+unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C fp test
 
-test :: $(TESTS) $(CUNIT)
+unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C parsing test
 
-test :: $(TESTS) $(CUNIT)
+unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C solver test
 
-#Miscellaneous
+functional :: quadsolve
+	$(MAKE) -C ../test/ test
+
+#Handle external dependencies
 
 $(CUNIT) $(OBJECTS) $(TESTS) : force
 	$(MAKE) -C  $(dir $@) $(notdir $@)
+
+#Miscellaneous
 
 clean ::
 	$(MAKE) -C cunit clean
