@@ -9,6 +9,12 @@ LINK	:= $(CC) $(CFLAGS) -o
 
 .PHONY : default clean force squeaky test
 
+#Thanks to 'https://stackoverflow.com/a/24005420'
+export VERBOSE
+ifndef VERBOSE
+.SILENT:
+endif
+
 default ::
 
 clean ::

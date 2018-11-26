@@ -1,3 +1,5 @@
+include ../src/make.i
+
 #Useful variables to pass to the tests
 PROGNAME	= quadsolve
 PROGPLACE	= ../src/
@@ -15,25 +17,24 @@ NANARG_ERR	= 5
 
 export NUMARG_ERR BADARG_ERR UNDERFLOW_ERR OVERFLOW_ERR NANARG_ERR
 
-test : numarg badarg overflow underflow nanarg
+default :: test
 
-.SILENT :
+test :: numarg badarg overflow underflow nanarg
 
 $(PROG) :
-	make -C $(PROGPLACE) $(PROGNAME) || { echo "Error: $(PROG) does not compile properly."; exit 1; }
-	echo "$(PROG) compiled properly."
+	$(MAKE) -C $(PROGPLACE) $(PROGNAME)
 
 numarg : numarg.bash $(PROG)
-	./numarg.bash && echo "'$<' passed successfully." || echo "Error: $(PROG) does not pass test '$<'."
+	./numarg.bash
 
 badarg : badarg.bash $(PROG)
-	./badarg.bash && echo "'$<' passed successfully." || echo "Error: $(PROG) does not pass test '$<'."
+	./badarg.bash
 
 overflow : overflow.bash $(PROG)
-	./overflow.bash && echo "'$<' passed successfully." || echo "Error: $(PROG) does not pass test '$<'."
+	./overflow.bash
 
 underflow : underflow.bash $(PROG)
-	./underflow.bash && echo "'$<' passed successfully." || echo "Error: $(PROG) does not pass test '$<'."
+	./underflow.bash
 
 nanarg : nanarg.bash $(PROG)
-	./nanarg.bash && echo "'$<' passed successfully." || echo "Error: $(PROG) does not pass test '$<'."
+	./nanarg.bash
