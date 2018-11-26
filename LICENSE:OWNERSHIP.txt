@@ -1,4 +1,8 @@
-                    GNU GENERAL PUBLIC LICENSE
+                   
+QuadSolver is a program created by Daniel Darcy, Stephen Fedele, and TJ Curry.  These three individuals own this program and all the modules within it.  With that being said others are welcome to download and use the product as long as they do not claim it is their own work.  Credit must be given where credit is due.
+
+
+		     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
