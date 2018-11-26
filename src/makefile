@@ -74,3 +74,14 @@ squeaky ::
 
 squeaky ::
 	rm -f quadsolve &>/dev/null
+
+#Install
+
+PREFIX = /usr/local
+
+install: quadsolve
+	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	cp $< $(DESTDIR)$(PREFIX)/bin/quadsolve
+
+uninstall:
+	rm -f $(DESTDIR)$(PREFIX)/bin/quadsolve
