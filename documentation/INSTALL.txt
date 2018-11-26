@@ -1,3 +1,5 @@
+INSTALL
+
 To install quadsolver on your computer so that it can be accessed from any directory follow these steps:
 - Go to src directory
 - Type command "make install"

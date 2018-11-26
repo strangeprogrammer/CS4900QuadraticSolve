@@ -1,3 +1,5 @@
+AUTOMATION
+
 All automation is done through the makefile.
 
 Testing: We use automated testing for unit testing.  To compile and run these tests:
@@ -17,7 +19,7 @@ Running: To run the program after installed, follow these steps:
 - Go to any directory
 - Type command "quadsolve a b c" where a b and c are real numbers
 
-If not installed take the following steps:
+Running: If not installed take the following steps:
 - Go to src directory
 - Compile quadsolve (directions above)
 - Type command "./quadsolve a b c" where a b and c are real numbers

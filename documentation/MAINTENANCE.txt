@@ -1,0 +1,6 @@
+MAINTENANCE
+
+If you experience any problems with quadsolver:
+- first check to make sure you have the most updated version from github.  
+- check if all tests run correctly with "make test"
+- uninstall and reinstall

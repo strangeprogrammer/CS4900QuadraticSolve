@@ -1,5 +1,14 @@
-Unit Testing:
+STANDARDS
 
-System Testing:
+Programming: CMU (ECE) coding standards is the coding standard used for this program.
+- Link -> https://users.ece.cmu.edu/~eno/coding/CCodingStandard.html
 
-Programming:
+
+Unit Testing: Unit testing is used to make sure each module is functioning correctly independent of the program as a whole.
+- The standard is to use automated tests to see if each module is working as expected.
+- Every case which could arise from different user inputs is covered in these unit tests.
+
+
+System Testing: System testing is used to make sure the program works as expected.
+- The standard used in this program is a script which compares actual output with expected output.
+- Every case which could arise from different user inputs is covered in these system tests.
