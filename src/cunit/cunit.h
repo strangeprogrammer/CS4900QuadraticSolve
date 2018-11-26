@@ -8,7 +8,7 @@ extern double cunit_dmacheps;
 int cunit_init();
 
 #define cunit_open(log) { \
-    if((cunit_log=fopen( log, "w") == NULL ) { \
+    if((cunit_log=fopen( log, "w")) == NULL ) { \
       cunit_log = stderr; \
     } \
 }

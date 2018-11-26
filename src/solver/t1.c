@@ -14,6 +14,8 @@
 
 int main(){//Need to check intercept values and number of roots value
 	cunit_init();//Initialize the unit testing framework
+    
+    cunit_open("../cunit/cunitLog.txt");
 	
 	//All values have been calculated in advance on paper to test the program against
 	
@@ -70,4 +72,6 @@ int main(){//Need to check intercept values and number of roots value
 	ret = linear(b, c);
 	assert_eq("Wrong number of roots",ret.numroots, 1);
 	assert_feqaerr("Wrong value for the low root", ret.low, x1, .000001);
+    
+    cunit_close;
 }
