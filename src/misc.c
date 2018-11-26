@@ -1,10 +1,13 @@
 #include "misc.h"
 
+//Idea for this sort of initialization taken from 'https://github.com/qmk/qmk_firmware/blob/master/keyboards/planck/keymaps/default/keymap.c'
 char* err_str[]={
-	"",//No error, no string
-	"Error: this program needs 3 arguments exactly.\n",
-	"Error: could not convert argument '%s' to a float.\n",
-	"Error: argument '%s' causes underflow.\n",
-	"Error: argument '%s' causes overflow.\n",
-	"Error: argument '%s' is not a number.\n"
+	[SUCCESS]=	"",//No error? No problem! No string!
+	[NUMARG_ERR]=	"Error: this program needs 3 arguments exactly.\n",
+	[BADARG_ERR]=	"Error: could not convert argument to a float.\n",
+	[UNDERFLOW_ERR]="Error: argument causes underflow.\n",
+	[OVERFLOW_ERR]=	"Error: argument causes overflow.\n",
+	[NANARG_ERR]=	"Error: argument is not a number.\n",
+	[SCANF_ERR]=	"Error: 'scanf' wasn't able to properly parse an argument.\n",
+	[INTERNAL_ERR]=	"Error: an unexpected error occured.\n",
 };
