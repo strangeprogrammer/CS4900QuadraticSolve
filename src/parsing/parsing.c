@@ -2,36 +2,67 @@
 #include "../misc.h"
 #include "parsing.h"
 
-bool checkargs(int argc){
-	if(argc!=4){
-		fprintf(stderr,err_str[NUMARG_ERR]);
-		return false;
-	}
-	return true;
+#define BUFSIZE 1024
+static char buffer[BUFSIZE];
+
+//Print out a dumb prompt
+bool prompt(int argnum){
+	printf("Enter argument (default: 0) %d: ",argnum);
+	return true;//Does this since it's used in 'getargs'
 }
 
-fpstatus getarg(char arg[]){
+//Converts the given string into a float, if possible
+//'arg' must be null-terminated for correct functionality
+err_code convert(char* arg,int arglen,float* dropbox){
 	char* end;
 	errno=0;
-	float parsed=strtof(arg,&end);
-	fpstatus retval={.f=0,.e=SUCCESS};
+	*dropbox=strtof(arg,&end);
 	
-	if(parsed==0||fpclassify(parsed)==FP_ZERO){
-		if(end==arg){
-			retval.e=BADARG_ERR;
-		}else if(errno==ERANGE){
-			retval.e=UNDERFLOW_ERR;
+	if(*dropbox==0
+	||fpclassify(*dropbox)==FP_ZERO){
+		if(end-arg!=arglen){
+			return BADARG_ERR;
+		}else if(fpclassify(*dropbox)==FP_SUBNORMAL){
+			return UNDERFLOW_ERR;
 		}
-	}else if(isinf(parsed)){
-		retval.e=OVERFLOW_ERR;
-	}else if(isnan(parsed)){
-		retval.e=NANARG_ERR;
+	}else if(isinf(*dropbox)){
+		return OVERFLOW_ERR;
+	}else if(isnan(*dropbox)){
+		return NANARG_ERR;
 	}
 	
-	if(retval.e!=SUCCESS)
-		fprintf(stderr,err_str[retval.e],arg);
+	return SUCCESS;
+}
+
+//Get a line from standard input, mess with it a little bit, and try to convert it to a float
+err_code getarg(float* dropbox){
+	//Get a line of input and make sure something was actually given
+	if(!fgets(buffer,BUFSIZE,stdin)){
+		return INTERNAL_ERR;
+	}
+	int line=strlen(buffer);
+	if(line<1){
+		return NOARG_ERR;
+	}
 	
-	retval.f=parsed;
+	//Needed by 'convert'
+	if(buffer[line-1]=='\n'){
+		line--;
+	}
 	
-	return retval;
+	return convert(buffer,line,dropbox);
+}
+
+err_code getargs(float* a,float* b,float* c){
+	err_code passup;
+	
+	//Takes advantage of short-circuit evaluation
+	//If any one of the 'getargs' doesn't work properly, return its error
+	if((prompt(1)&&(passup=getarg(a))!=SUCCESS)
+	||(prompt(2)&&(passup=getarg(b))!=SUCCESS)
+	||(prompt(3)&&(passup=getarg(c))!=SUCCESS)){
+		return passup;
+	}
+	
+	return SUCCESS;
 }

@@ -3,12 +3,9 @@
 
 #include "../misc.h"
 
-typedef struct fpstatus{
-	float f;
-	err_code e;
-} fpstatus;
-
-bool checkargs(int argc);
-fpstatus getarg(char* arg);
+bool prompt(int argunm);
+err_code convert(char* arg,int arglen,float* dropbox);
+err_code getarg(float* dropbox);
+err_code getargs(float* a,float* b,float* c);
 
 #endif //PARSING_H

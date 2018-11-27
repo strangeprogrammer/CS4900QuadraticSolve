@@ -16,7 +16,7 @@ OBJECTS :=	fp/ieee.o		\
 TESTS :=	fp/t3		\
 		fp/t4		\
 		fp/t5		\
-		parsing/t2	\
+#		parsing/t2	\
 		solver/t1
 
 #For the actual program

@@ -8,6 +8,6 @@ char* err_str[]={
 	[UNDERFLOW_ERR]="Error: argument causes underflow.\n",
 	[OVERFLOW_ERR]=	"Error: argument causes overflow.\n",
 	[NANARG_ERR]=	"Error: argument is not a number.\n",
-	[SCANF_ERR]=	"Error: 'scanf' wasn't able to properly parse an argument.\n",
 	[INTERNAL_ERR]=	"Error: an unexpected error occured.\n",
+	[NOARG_ERR]=	"Error: an argument is required.\n"
 };

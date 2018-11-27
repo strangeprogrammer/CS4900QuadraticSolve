@@ -19,8 +19,8 @@ typedef enum err_code{
 	UNDERFLOW_ERR	= 3,
 	OVERFLOW_ERR	= 4,
 	NANARG_ERR	= 5,
-	SCANF_ERR	= 6,
-	INTERNAL_ERR	= 7
+	INTERNAL_ERR	= 6,
+	NOARG_ERR	= 7
 } err_code;
 
 extern char* err_str[];
