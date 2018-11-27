@@ -21,6 +21,8 @@ TESTS :=	fp/t3		\
 		fp/t5		\
 #		parsing/t2	\
 		parsing/t6	\
+		parsing/t7	\
+		parsing/t8	\
 		solver/t1
 
 #For the actual program
