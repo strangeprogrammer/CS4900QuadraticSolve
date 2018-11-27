@@ -1,16 +1,18 @@
 #!/bin/bash
-#echo "System Test: "
+
 {
-./quadsolve "1" "2" "3"
-./quadsolve "1" "-6.4" "10.23"
-./quadsolve "1" "10" "25"
-./quadsolve "1" "-10" "30"
-./quadsolve "-.5" "2" "1"
+	echo -e "1\n2\n3\n"		| ./quadsolve
+	echo -e "1\n-6.4\n10.23\n"	| ./quadsolve
+	echo -e "1\n10\n25\n"		| ./quadsolve
+	echo -e "1\n-10\n30\n"		| ./quadsolve
+	echo -e "-.5\n2\n1\n"		| ./quadsolve
 } > st_actual_output.txt
+
 diff st_actual_output.txt st_expected_output.txt >> system_test_log.txt
 if [ $? != 0 ]; then
-    echo "SYSTEM TEST FAILED: Check sytem_test_log for more info."
-    echo $(date) >> system_test_log.txt
-    echo "" >>system_test_log.txt
+	echo "SYSTEM TEST FAILED: Check sytem_test_log for more info."
+	echo $(date) >> system_test_log.txt
+	echo "" >>system_test_log.txt
 fi
+
 rm st_actual_output.txt

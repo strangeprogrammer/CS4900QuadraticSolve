@@ -9,14 +9,17 @@ CUNIT :=	cunit/cunit.o
 OBJECTS :=	fp/ieee.o		\
 		fp/quadfunc.o		\
 		fp/validate.o		\
-		parsing/parsing.o	\
+		parsing/convert.o	\
+		parsing/getarg.o	\
+		parsing/getargs.o	\
+		parsing/prompt.o	\
 		solver/linear.o		\
 		solver/quadratic.o
 
 TESTS :=	fp/t3		\
 		fp/t4		\
 		fp/t5		\
-		parsing/t2	\
+#		parsing/t2	\
 		solver/t1
 
 #For the actual program
@@ -26,7 +29,7 @@ default :: quadsolve
 quadsolve : main.o $(OBJECTS) misc.o
 	$(LINK) $@ $^ -lm
 
-main.o : main.c libraries.h misc.h parsing/parsing.h
+main.o : main.c libraries.h misc.h parsing/getargs.h
 	$(COMP) $@ $<
 
 misc.o : misc.c misc.h
@@ -47,11 +50,11 @@ unit :: $(TESTS) $(CUNIT)
 unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C solver test
 
-unit :: system_test_script.sh
-	./system_test_script.sh
-
 functional :: quadsolve
 	$(MAKE) -C ../test/ test
+
+functional :: system_test_script.sh quadsolve
+	./system_test_script.sh
 
 #Handle external dependencies
 
@@ -91,9 +94,9 @@ squeaky ::
 
 PREFIX = /usr/local
 
-install: quadsolve
+install : quadsolve
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp $< $(DESTDIR)$(PREFIX)/bin/quadsolve
 
-uninstall:
+uninstall :
 	rm -f $(DESTDIR)$(PREFIX)/bin/quadsolve

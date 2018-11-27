@@ -1,33 +1,16 @@
 #!/bin/bash
 
-#Active Low Test
-$PROG INF INF INF &>/dev/null
-if [ "$?" != "$OVERFLOW_ERR" ]; then
-	exit 1
-fi
+source ./bashunit.bash
 
-#Active Low Test
-$PROG 1e256 1e256 1e256 &>/dev/null
-if [ "$?" != "$OVERFLOW_ERR" ]; then
-	exit 1
-fi
+#Active High Tests
 
-#Active Low Test
-$PROG -INF -INF -INF &>/dev/null
-if [ "$?" != "$OVERFLOW_ERR" ]; then
-	exit 1
-fi
+assert_returned "INF\nINF\nINF\n"		$OVERFLOW_ERR || exit 1
+assert_returned "1e256\n1e256\n1e256\n"		$OVERFLOW_ERR || exit 1
+assert_returned "-INF\n-INF\n-INF\n"		$OVERFLOW_ERR || exit 1
+assert_returned "-1e256\n-1e256\n-1e256\n"	$OVERFLOW_ERR || exit 1
 
-#Active Low Test
-$PROG -1e256 -1e256 -1e256 &>/dev/null
-if [ "$?" != "$OVERFLOW_ERR" ]; then
-	exit 1
-fi
+#Active Low Tests
 
-#Active High Test
-$PROG 100 100 100 &>/dev/null
-if [ "$?" == "$OVERFLOW_ERR" ]; then
-	exit 1
-fi
+assert_nreturned "100\n100\n100\n"		$OVERFLOW_ERR || exit 1
 
 exit 0
