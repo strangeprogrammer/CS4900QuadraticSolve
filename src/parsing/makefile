@@ -25,7 +25,17 @@ prompt.o : prompt.c prompt.h ../libraries.h ../misc.h
 #test :: t2
 #	./t2
 
+t6.o : t6.c prompt.h ../cunit/cunit.h ../libraries.h ../misc.h
+	$(COMP) $@ $<
+
+t6 : t6.o ../cunit/cunit.o prompt.o ../misc.o
+	$(LINK) $@ $^ -lm
+
+test :: t6 t6.py
+	./t6 | ./t6.py
+
 #Miscellaneous
 
-#squeaky ::
+squeaky ::
 #	rm -f t2 &>/dev/null
+	rm -f t6 &>/dev/null
