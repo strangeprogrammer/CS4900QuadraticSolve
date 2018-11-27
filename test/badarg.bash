@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#Active Low Test
-$PROG gib ber ish &>/dev/null
-if [ "$?" != "$BADARG_ERR" ]; then
-	exit 1
-fi
+source ./bashunit.bash
 
-#Active High Test
-$PROG 1 2 3 &>/dev/null
-if [ "$?" == "$BADARG_ERR" ]; then
-	exit 1
-fi
+#Active High Tests
+
+echo -e "gib\nber\nish\n" | $PROG &>/dev/null
+assert_returned "$BADARG_ERR" || exit 1
+
+#Active High Tests
+
+echo -e "1\n2\n3\n" | $PROG &>/dev/null
+assert_nreturned "$BADARG_ERR" || exit 1
 
 exit 0

@@ -9,23 +9,25 @@ export PROG
 
 #Error codes to pass to the tests
 
-NUMARG_ERR	= 1
+SUCCESS		= 0
+NOARG_ERR	= 1
 BADARG_ERR	= 2
 UNDERFLOW_ERR	= 3
 OVERFLOW_ERR	= 4
 NANARG_ERR	= 5
+INTERNAL_ERR	= 6
 
-export NUMARG_ERR BADARG_ERR UNDERFLOW_ERR OVERFLOW_ERR NANARG_ERR
+export SUCCESS NOARG_ERR BADARG_ERR UNDERFLOW_ERR OVERFLOW_ERR NANARG_ERR INTERNAL_ERR
 
 default :: test
 
-test :: numarg badarg overflow underflow nanarg
+test :: noarg badarg overflow underflow nanarg
 
 $(PROG) :
 	$(MAKE) -C $(PROGPLACE) $(PROGNAME)
 
-numarg : numarg.bash $(PROG)
-	./numarg.bash
+noarg : noarg.bash $(PROG)
+	./noarg.bash
 
 badarg : badarg.bash $(PROG)
 	./badarg.bash
@@ -38,3 +40,5 @@ underflow : underflow.bash $(PROG)
 
 nanarg : nanarg.bash $(PROG)
 	./nanarg.bash
+
+#INTERNAL_ERR	= 6

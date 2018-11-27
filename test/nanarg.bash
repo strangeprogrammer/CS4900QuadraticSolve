@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#Active Low Test
-$PROG NAN NAN NAN &>/dev/null
-if [ "$?" != "$NANARG_ERR" ]; then
-	exit 1
-fi
+source ./bashunit.bash
 
-#Active High Test
-$PROG 1 1 1 &>/dev/null
-if [ "$?" == "$NANARG_ERR" ]; then
-	exit 1
-fi
+#Active High Tests
+
+echo -e "NAN\nNAN\nNAN\n" | $PROG &>/dev/null
+assert_returned "$NANARG_ERR" || exit 1
+
+#Active Low Tests
+
+echo -e "1\n1\n1\n" | $PROG &>/dev/null
+assert_nreturned "$NANARG_ERR" || exit 1
 
 exit 0
