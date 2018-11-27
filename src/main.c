@@ -8,6 +8,10 @@
 #include "solver/quadratic.h"
 
 int main(){
+	//Disable output buffering
+	//https://stackoverflow.com/a/7876756
+	setvbuf(stdout,NULL,_IONBF,0);
+	
 	//Get input values
 	float a,b,c;
 	err_code argstatus=getargs(&a,&b,&c);
