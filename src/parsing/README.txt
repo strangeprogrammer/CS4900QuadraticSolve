@@ -1,7 +1,7 @@
 **parsing -> directory info:**
 
 parsing directory holds implementation and test files which are listed below.
-All of the implementation files in this directory used for retrieving and checking arguments given to the program by the user.
+Files in this directory are used for obtaining user input, providing feedback, and returning parsing errors.
 
 Implementation files:
 	- parsing.c, parsing.h

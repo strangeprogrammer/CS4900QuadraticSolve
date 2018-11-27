@@ -33,5 +33,3 @@ To make all the tests and run them, type 'make test'.
 To remove all object files recursively, type 'make clean'.
 
 To remove all object files and binary files recursively, type 'make squeaky'.
-
-To run the program using fileIn.txt, type 'make run'.
