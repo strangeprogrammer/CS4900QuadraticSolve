@@ -53,8 +53,8 @@ unit :: $(TESTS) $(CUNIT)
 functional :: quadsolve
 	$(MAKE) -C ../test/ test
 
-#functional :: system_test_script.sh
-#	./system_test_script.sh
+functional :: system_test_script.sh quadsolve
+	./system_test_script.sh
 
 #Handle external dependencies
 
