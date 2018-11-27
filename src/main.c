@@ -16,7 +16,7 @@ int main(){
 	float a,b,c;
 	err_code argstatus=getargs(&a,&b,&c);
 	if(argstatus!=SUCCESS){
-		fprintf(stderr,err_str[argstatus]);
+		fprintf(stderr,"%s",err_str[argstatus]);
 		return argstatus;
 	}
 	

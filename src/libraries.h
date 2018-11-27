@@ -11,6 +11,8 @@
 //Workarounds for some compiler warnings
 int fileno(FILE *stream);
 FILE *fdopen(int fd, const char *mode);
+#ifdef LINUX
 void setlinebuf(FILE *stream);
+#endif
 
 #endif //LIBRARIES_H
