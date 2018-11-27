@@ -17,6 +17,9 @@ parsing/	//Parses the given input and returns an error if it's invalid
 README.txt	//You're reading me right now!
 solver/		//The actual quadratic equation solver
 input/		//Retrieves raw user input and converts it to a,b, and c values
+st_expected_output.txt/		//Ouput compared to actual ouput for system test
+system_test_log/		//Logs the errors which arise from system tests
+system_test_script.sh		//Script which runs the system tests
 
 
 
