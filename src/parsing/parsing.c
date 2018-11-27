@@ -22,9 +22,13 @@ err_code convert(char* arg,int arglen,float* dropbox){
 	||fpclassify(*dropbox)==FP_ZERO){
 		if(end-arg!=arglen){
 			return BADARG_ERR;
-		}else if(fpclassify(*dropbox)==FP_SUBNORMAL){
+		}else if(errno==ERANGE//If it's not an overflow yet still out of range
+		&&!(*dropbox==HUGE_VALF
+		||*dropbox==HUGE_VALL)){
 			return UNDERFLOW_ERR;
 		}
+	}else if(fpclassify(*dropbox)==FP_SUBNORMAL){//Or it's classified as too small
+		return UNDERFLOW_ERR;
 	}else if(isinf(*dropbox)){
 		return OVERFLOW_ERR;
 	}else if(isnan(*dropbox)){
@@ -40,6 +44,7 @@ err_code getarg(float* dropbox){
 	if(!fgets(buffer,BUFSIZE,stdin)){
 		return INTERNAL_ERR;
 	}
+	
 	int line=strlen(buffer);
 	if(line<1){
 		return NOARG_ERR;
@@ -48,6 +53,10 @@ err_code getarg(float* dropbox){
 	//Needed by 'convert'
 	if(buffer[line-1]=='\n'){
 		line--;
+	}
+	
+	if(line<1){
+		return NOARG_ERR;
 	}
 	
 	return convert(buffer,line,dropbox);
