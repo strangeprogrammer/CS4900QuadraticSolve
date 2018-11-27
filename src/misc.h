@@ -14,13 +14,12 @@ typedef struct intercepts{
 
 typedef enum err_code{
 	SUCCESS		= 0,
-	NUMARG_ERR	= 1,
+	NOARG_ERR	= 1,
 	BADARG_ERR	= 2,
 	UNDERFLOW_ERR	= 3,
 	OVERFLOW_ERR	= 4,
 	NANARG_ERR	= 5,
-	INTERNAL_ERR	= 6,
-	NOARG_ERR	= 7
+	INTERNAL_ERR	= 6
 } err_code;
 
 extern char* err_str[];
