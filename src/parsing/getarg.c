@@ -13,20 +13,20 @@ err_code getarg(float* dropbox){
 		return INTERNAL_ERR;
 	}
 	
-	int line=strlen(buffer);
-	if(line<1){
+	int linesize=strlen(buffer);
+	if(linesize==0){
 		return NOARG_ERR;
 	}
 	
 	//Needed by 'convert'
-	if(buffer[line-1]=='\n'){
-		line--;
+	if(buffer[linesize-1]=='\n'){
+		linesize--;
 	}
 	
 	//This is duplicated since that newline character can mess things up
-	if(line<1){
+	if(linesize==0){
 		return NOARG_ERR;
 	}
 	
-	return convert(buffer,line,dropbox);
+	return convert(buffer,linesize,dropbox);
 }
