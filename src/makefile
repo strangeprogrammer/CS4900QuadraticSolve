@@ -47,6 +47,9 @@ unit :: $(TESTS) $(CUNIT)
 unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C solver test
 
+unit :: system_test_script.sh
+	./system_test_script.sh
+
 functional :: quadsolve
 	$(MAKE) -C ../test/ test
 
