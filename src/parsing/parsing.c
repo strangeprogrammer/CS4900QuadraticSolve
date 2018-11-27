@@ -4,7 +4,7 @@
 
 bool checkargs(int argc){
 	if(argc!=4){
-		fprintf(stderr,err_str[NUMARG_ERR]);
+		fprintf(stderr,"%s",err_str[NUMARG_ERR]);
 		return false;
 	}
 	return true;
