@@ -1,0 +1,25 @@
+AUTOMATION
+
+All automation is done through the makefile.
+
+Testing: We use automated testing for unit testing.  To compile and run these tests:
+- Go to src directory
+- Type command "make test"
+
+*If there are any errors in the test the file and line number in which that test failed will be printed to the console and stored in the cunitLog.txt file.
+*If the tests all pass there is nothing outputted to the console.
+
+
+Compiling: The compiling of all files is done with automation so that nobody has to compile each file indivdually. To compile quad solver:
+- Go to src directory
+- Type command "make"
+
+
+Running: To run the program after installed, follow these steps:
+- Go to any directory
+- Type command "quadsolve a b c" where a b and c are real numbers
+
+Running: If not installed take the following steps:
+- Go to src directory
+- Compile quadsolve (directions above)
+- Type command "./quadsolve a b c" where a b and c are real numbers

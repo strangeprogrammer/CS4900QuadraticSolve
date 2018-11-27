@@ -47,6 +47,9 @@ unit :: $(TESTS) $(CUNIT)
 unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C solver test
 
+unit :: system_test_script.sh
+	./system_test_script.sh
+
 functional :: quadsolve
 	$(MAKE) -C ../test/ test
 
@@ -83,3 +86,14 @@ squeaky ::
 
 squeaky ::
 	rm -f quadsolve &>/dev/null
+
+#Install
+
+PREFIX = /usr/local
+
+install: quadsolve
+	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	cp $< $(DESTDIR)$(PREFIX)/bin/quadsolve
+
+uninstall:
+	rm -f $(DESTDIR)$(PREFIX)/bin/quadsolve

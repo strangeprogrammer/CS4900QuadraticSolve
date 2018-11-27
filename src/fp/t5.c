@@ -3,7 +3,7 @@
 
 int main(){
 	cunit_init();//Initialize testing framework
-	
+
 	//TEST NUMROOTS==0
 	//Test 1
 	//Real-ish data
@@ -115,6 +115,6 @@ int main(){
 			.high=19,
 			.numroots=2};
 	assert_eq("validate didn't return correct value",validate(a10,b10,c10,x10),false);
-	
+    
 	return 0;
 }

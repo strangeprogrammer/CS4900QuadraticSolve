@@ -13,6 +13,7 @@
 
 int main(){
 	cunit_init();
+
 	
 	//Test working functionality
 	fpstatus ret1, ret2, ret3, ret4, ret5;
@@ -21,16 +22,16 @@ int main(){
 	ret3 = getarg("-1");	//negative int
 	ret4 = getarg("2.00");	//decimal
 	ret5 = getarg("-2.00");	//negative decimal
-	assert_feqaerr("zero",			ret1.f, 0.0,  0.0000001);
-	assert_eq("zero",			ret1.e, SUCCESS);
-	assert_feqaerr("int",			ret2.f, 1.0,  0.0000001);
-	assert_eq("int",			ret1.e, SUCCESS);
-	assert_feqaerr("negative int",		ret3.f, -1.0, 0.0000001);
-	assert_eq("negative int",		ret1.e, SUCCESS);
-	assert_feqaerr("decimal",		ret4.f, 2.0,  0.0000001);
-	assert_eq("decimal",			ret1.e, SUCCESS);
-	assert_feqaerr("negative decimal",	ret5.f, -2.0, 0.0000001);
-	assert_eq("negative decimal",		ret1.e, SUCCESS);
+	assert_feqaerr("zero",ret1.f, 0.0,  0.0000001);
+	assert_eq("zero",ret1.e, SUCCESS);
+	assert_feqaerr("int",ret2.f, 1.0,  0.0000001);
+	assert_eq("int",ret1.e, SUCCESS);
+	assert_feqaerr("negative int",ret3.f, -1.0, 0.0000001);
+	assert_eq("negative int",ret1.e, SUCCESS);
+	assert_feqaerr("decimal",ret4.f, 2.0,  0.0000001);
+	assert_eq("decimal",ret1.e, SUCCESS);
+	assert_feqaerr("negative decimal",ret5.f, -2.0, 0.0000001);
+	assert_eq("negative decimal",ret1.e, SUCCESS);
 	
 	//Test error handling
 	fpstatus ret6, ret7, ret8, ret9;

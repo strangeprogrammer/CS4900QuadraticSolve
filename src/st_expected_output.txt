@@ -1,0 +1,5 @@
+There are 0 x-intercepts.
+There are 2 x-intercepts: 3.099994, 3.300006
+There is 1 x-intercept: -5.000000
+There are 0 x-intercepts.
+There are 2 x-intercepts: 4.449490, -0.449490

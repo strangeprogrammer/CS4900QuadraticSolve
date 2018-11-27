@@ -14,7 +14,6 @@
 
 int main(){//Need to check intercept values and number of roots value
 	cunit_init();//Initialize the unit testing framework
-	
 	//All values have been calculated in advance on paper to test the program against
 	
 	//QUADRATIC TESTS/VARIABLES
