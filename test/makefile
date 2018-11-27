@@ -41,4 +41,4 @@ underflow : underflow.bash $(PROG)
 nanarg : nanarg.bash $(PROG)
 	./nanarg.bash
 
-#INTERNAL_ERR	= 6
+#It's not exactly possible per se to implement tests for internal errors (that and it would become a headache very quickly).

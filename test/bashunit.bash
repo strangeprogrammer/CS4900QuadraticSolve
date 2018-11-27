@@ -1,19 +1,19 @@
 #!/bin/bash
 
-function assert_streq {
-	[ "$1" == "$2" ] && return 0
-	return 1
-}
-
-function assert_strneq {
-	[ "$1" != "$2" ] && return 0
-	return 1
-}
-
 function assert_returned {
-	return $(assert_streq "$?" "$1")
+	echo -e "$1" | $PROG &>/dev/null
+	local retval="$?"
+	[ "$retval" == "$2" ] && return 0
+	#https://stackoverflow.com/a/192337
+	echo "Error: File \"$(basename $0)\": String \"$1\": \"$retval\" != \"$2\""
+	return 1
 }
 
 function assert_nreturned {
-	return $(assert_strneq "$?" "$1")
+	echo -e "$1" | $PROG &>/dev/null
+	local retval="$?"
+	[ "$retval" != "$2" ] && return 0
+	#https://stackoverflow.com/a/192337
+	echo "Error: File \"$(basename $0)\": String \"$1\": \"$retval\" == \"$2\""
+	return 1
 }
