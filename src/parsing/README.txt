@@ -7,4 +7,10 @@ Implementation files:
 	- parsing.c, parsing.h
 
 Test files:
-	- t2.c
+	- mock_convert.c
+	- mock_getarg.c
+	- mock_prompt.c
+	- t_prompt.c
+	- t_conv.c
+	- t_getarg.c
+	- t_getargs.c

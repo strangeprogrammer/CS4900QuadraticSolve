@@ -10,16 +10,16 @@ quadratic.o : quadratic.c quadratic.h ../libraries.h ../fp/ieee.h
 
 #For the tests
 
-t1.o : t1.c ../cunit/cunit.h quadratic.h linear.h ../misc.h
+t_quad_line.o : t_quad_line.c ../cunit/cunit.h quadratic.h linear.h ../misc.h
 	$(COMP) $@ $<
 
-t1 : t1.o ../cunit/cunit.o quadratic.o linear.o ../fp/ieee.o
+t_quad_line : t_quad_line.o ../cunit/cunit.o quadratic.o linear.o ../fp/ieee.o
 	$(LINK) $@ $^ -lm
 
-test :: t1
-	./t1
+test :: t_quad_line
+	./t_quad_line
 
 #Miscellaneous
 
 squeaky ::
-	rm -f t1 &>/dev/null
+	rm -f t_quad_line &>/dev/null

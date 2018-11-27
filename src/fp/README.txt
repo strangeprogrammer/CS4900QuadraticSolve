@@ -11,6 +11,6 @@ Implementation files:
 
 Test files:
 	- mock_validate_deps.c
-	- t3.c
-	- t4.c
-	- t5.c
+	- t_isq_feq.c
+	- t_qfunc.c
+	- t_valid.c

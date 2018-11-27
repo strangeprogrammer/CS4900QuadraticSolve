@@ -16,15 +16,14 @@ OBJECTS :=	fp/ieee.o		\
 		solver/linear.o		\
 		solver/quadratic.o
 
-TESTS :=	fp/t3		\
-		fp/t4		\
-		fp/t5		\
-#		parsing/t2	\
-		parsing/t6	\
-		parsing/t7	\
-		parsing/t8	\
-		parsing/t9	\
-		solver/t1
+TESTS :=	fp/t_isq_feq		\
+		fp/t_qfunc		\
+		fp/t_valid		\
+		parsing/t_prompt	\
+		parsing/t_conv		\
+		parsing/t_getarg	\
+		parsing/t_getargs	\
+		solver/t_quad_line
 
 #For the actual program
 
@@ -39,7 +38,7 @@ main.o : main.c libraries.h misc.h parsing/getargs.h
 misc.o : misc.c misc.h
 	$(COMP) $@ $<
 
-#For the tests
+#Tests
 
 .PHONY : functional unit
 

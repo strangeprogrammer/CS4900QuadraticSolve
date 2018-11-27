@@ -1,5 +1,5 @@
 /*
-* t3.c
+* t_isq_feq.c
 * Unit tests for ieee_isquad(), ieee_feq()
 *		Both return bools
 */
@@ -19,6 +19,6 @@ int main(){
 	assert_eq("feq not working right", feq((1.1*5) - 2.2,	3.3),true);
 	assert_eq("feq not working right", feq((1.1*3) - 3,	.3),true);
 	assert_eq("feq not working right", feq(3,2),false);
-    
+	
 	return 0;
 }

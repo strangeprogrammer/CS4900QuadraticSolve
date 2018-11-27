@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-def t6():
+def t_prompt():
 	stra=raw_input()
 	strb=raw_input()
 	strc=raw_input()
@@ -18,4 +18,4 @@ def t6():
 		return False
 	return True
 
-exit(not t6())
+exit(not t_prompt())

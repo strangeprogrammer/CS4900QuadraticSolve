@@ -1,5 +1,5 @@
 /*
-* t1.c
+* t_quad_line.c
 * Unit tests quadratic_quadratic() and linear_linear().
 * Calculates the roots and number of roots
 *   (respectively) for  intercepts.low and intercepts.high

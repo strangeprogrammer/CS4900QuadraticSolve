@@ -8,4 +8,4 @@ Implementation files:
 	- quadratic.c, quadratic.h
 
 Test files:
-	- t1.c
+	- t_quad_line.c
