@@ -1,7 +1,6 @@
 #!/bin/bash
 
 make
-
 #echo "System Test: "
 {
 ./quadsolve "1" "2" "3"

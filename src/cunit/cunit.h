@@ -8,7 +8,7 @@ extern double cunit_dmacheps;
 int cunit_init();
 
 #define cunit_open(log) { \
-    if((cunit_log=fopen( log, "w")) == NULL ) { \
+    if((cunit_log=fopen( log, "a")) == NULL ) { \
       cunit_log = stderr; \
     } \
 }
@@ -25,8 +25,12 @@ int cunit_init();
 
 #define assert_eq(str,a,b) { \
   if( a != b ) { \
-    fprintf(cunit_log, "%s  LINE %d: %s, %d !== %d\n", \
+    fprintf(stderr, "%s  LINE %d: %s, %d !== %d\n", \
               __FILE__ , __LINE__ , str ,  a , b ); \
+    cunit_open("../cunit/cunitLog.txt"); \
+    fprintf(cunit_log, "%s  LINE %d: %s, %d !== %d\n", \
+            __FILE__ , __LINE__ , str ,  a , b ); \
+    cunit_close; \
   } \
 }
 #define assert_neq(str,a,b) { \
@@ -68,8 +72,12 @@ int cunit_init();
 // eq subject to absolute error
 #define assert_feqaerr(str,a,b,aerr) { \
   if( fabs(a - b) > aerr ) { \
-    fprintf(cunit_log, "%s  LINE %d: %s, %24.16f !== %24.16f err=%10.6e\n", \
+    fprintf(stderr, "%s  LINE %d: %s, %24.16f !== %24.16f err=%10.6e\n", \
               __FILE__ , __LINE__ , str , a , b , aerr); \
+    cunit_open("../cunit/cunitLog.txt"); \
+    fprintf(cunit_log, "%s  LINE %d: %s, %f !== %f\n", \
+            __FILE__ , __LINE__ , str ,  a , b ); \
+    cunit_close; \
   } \
 }
 // eq subject to relative error
