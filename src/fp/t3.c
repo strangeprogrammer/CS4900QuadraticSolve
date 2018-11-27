@@ -9,7 +9,6 @@
 
 int main(){
 	cunit_init();
-    cunit_open("../cunit/cunitLog.txt");
 	
 	//ISQUAD TESTS/VARIABLES
 	//The following single test has roots x1 = 3.1 and x2 = 3.3
@@ -21,6 +20,5 @@ int main(){
 	assert_eq("feq not working right", feq((1.1*3) - 3,	.3),true);
 	assert_eq("feq not working right", feq(3,2),false);
     
-    cunit_close;
 	return 0;
 }

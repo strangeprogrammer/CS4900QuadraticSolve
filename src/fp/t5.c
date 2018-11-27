@@ -3,7 +3,6 @@
 
 int main(){
 	cunit_init();//Initialize testing framework
-    cunit_open("../cunit/cunitLog.txt");
 
 	//TEST NUMROOTS==0
 	//Test 1
@@ -116,7 +115,6 @@ int main(){
 			.high=19,
 			.numroots=2};
 	assert_eq("validate didn't return correct value",validate(a10,b10,c10,x10),false);
-    cunit_close;
-	
+    
 	return 0;
 }

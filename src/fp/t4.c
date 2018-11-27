@@ -3,8 +3,6 @@
 
 int main(){
 	cunit_init();//Initialize testing framework
-    cunit_open("../cunit/cunitLog.txt");
-
     
 	assert_feqaerr("Wrong value for quadfunc",quadfunc(0,0,0,0),(double)0,	0.0000000000000000000000000000000000000000000000001);
 	assert_feqaerr("Wrong value for quadfunc",quadfunc(1,1,1,1),(double)3,	0.0000000000000000000000000000000000000000000000001);
@@ -13,7 +11,5 @@ int main(){
 	assert_feqaerr("Wrong value for quadfunc",quadfunc(-1,-1,-1,-1),(double)-1,	0.0000000000000000000000000000000000000000000000001);
 	assert_feqaerr("Wrong value for quadfunc",quadfunc(-1,-2,-3,-4),(double)-11,	0.0000000000000000000000000000000000000000000000001);
 	assert_feqaerr("Wrong value for quadfunc",quadfunc(-4,-3,-2,-1),(double)-3,	0.0000000000000000000000000000000000000000000000001);
-	
-    cunit_close;
-	return 0;
+    return 0;
 }

@@ -13,7 +13,6 @@
 
 int main(){
 	cunit_init();
-    cunit_open("../cunit/cunitLog.txt");
 
 	
 	//Test working functionality
@@ -57,5 +56,4 @@ int main(){
 	assert_eq("overflow",ret7.e, OVERFLOW_ERR);
 	assert_eq("word",ret8.e, BADARG_ERR);
 	assert_eq("nan",ret9.e, NANARG_ERR);
-    cunit_close;
 }
