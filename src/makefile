@@ -9,7 +9,10 @@ CUNIT :=	cunit/cunit.o
 OBJECTS :=	fp/ieee.o		\
 		fp/quadfunc.o		\
 		fp/validate.o		\
-		parsing/parsing.o	\
+		parsing/convert.o	\
+		parsing/getarg.o	\
+		parsing/getargs.o	\
+		parsing/prompt.o	\
 		solver/linear.o		\
 		solver/quadratic.o
 
@@ -47,11 +50,11 @@ unit :: $(TESTS) $(CUNIT)
 unit :: $(TESTS) $(CUNIT)
 	$(MAKE) -C solver test
 
-unit :: system_test_script.sh
-	./system_test_script.sh
-
 functional :: quadsolve
 	$(MAKE) -C ../test/ test
+
+#functional :: system_test_script.sh
+#	./system_test_script.sh
 
 #Handle external dependencies
 

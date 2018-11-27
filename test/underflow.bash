@@ -2,8 +2,8 @@
 
 source ./bashunit.bash
 
-#Shouldn't overflow:	1e-37
-#Should overflow:	1e-38
+#Shouldn't underflow:	1e-37
+#Should underflow:	1e-38
 
 #Active High Tests
 
