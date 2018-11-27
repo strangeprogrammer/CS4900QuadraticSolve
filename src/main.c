@@ -3,7 +3,7 @@
 
 #include "fp/ieee.h"
 #include "fp/validate.h"
-#include "parsing/parsing.h"
+#include "parsing/getargs.h"
 #include "solver/linear.h"
 #include "solver/quadratic.h"
 

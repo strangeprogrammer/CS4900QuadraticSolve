@@ -29,7 +29,7 @@ default :: quadsolve
 quadsolve : main.o $(OBJECTS) misc.o
 	$(LINK) $@ $^ -lm
 
-main.o : main.c libraries.h misc.h parsing/parsing.h
+main.o : main.c libraries.h misc.h parsing/getargs.h
 	$(COMP) $@ $<
 
 misc.o : misc.c misc.h
@@ -94,9 +94,9 @@ squeaky ::
 
 PREFIX = /usr/local
 
-install: quadsolve
+install : quadsolve
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp $< $(DESTDIR)$(PREFIX)/bin/quadsolve
 
-uninstall:
+uninstall :
 	rm -f $(DESTDIR)$(PREFIX)/bin/quadsolve
