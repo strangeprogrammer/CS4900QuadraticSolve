@@ -10,11 +10,11 @@ int main(){
 	
 	//Active High Tests
 	assert_eq("Couldn't convert string successfully",convert("1234",4,&dropbox),SUCCESS);
-	assert_feqrerr("Wrong floating point number returned",dropbox,1234,0.00001);
+	assert_feqrerr("Wrong floating point number returned",dropbox,(float)1234,0.00001);
 	assert_eq("Couldn't convert string successfully",convert(".56789",6,&dropbox),SUCCESS);
 	assert_feqrerr("Wrong floating point number returned",dropbox,.56789,0.00001);
 	assert_eq("Couldn't convert string successfully",convert("01234.",6,&dropbox),SUCCESS);
-	assert_feqrerr("Wrong floating point number returned",dropbox,1234,0.00001);
+	assert_feqrerr("Wrong floating point number returned",dropbox,(float)1234,0.00001);
 	assert_eq("Couldn't convert string successfully",convert("01234.56789",11,&dropbox),SUCCESS);
 	assert_feqrerr("Wrong floating point number returned",dropbox,01234.56789,0.00001);
 	
